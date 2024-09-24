@@ -1,7 +1,9 @@
 import "./App.css";
 import { useState } from "react";
+import Header from "./components/header/Header";
 import IngredientsInput from "./components/Ingredients-input/Ingredients-input";
 import IngredientsOutput from "./components/Ingredients-output/Ingredients-output";
+import Footer from "./components/footer/Footer";
 // const [response, setResponse] = useState(""); // State for chat response
 
 function App() {
@@ -10,7 +12,7 @@ function App() {
 
   return (
     <>
-      <div>Koalas rule</div>
+      <Header />
       <IngredientsInput
         userInput={userInput}
         setUserInput={setUserInput}
@@ -22,6 +24,8 @@ function App() {
         ingredients={[]}
         steps={[]}
       />
+      {/* button */}
+      <Footer />
     </>
   );
 }

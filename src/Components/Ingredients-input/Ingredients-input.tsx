@@ -112,7 +112,7 @@ Example Output:
         className="user-input"
       />
       <button className="button" type="submit">
-        <img src="/arrow.png" alt="Send" />
+        Add
       </button>
     </form>
   );
