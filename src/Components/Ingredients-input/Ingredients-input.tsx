@@ -3,11 +3,9 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const api_key = import.meta.env.VITE_PUBLIC_GOOGLE_API_KEY;
 
-console.log(api_key)
-
 if (!api_key) {
   throw new Error(
-    "NEXT_PUBLIC_GOOGLE_API_KEY is not set in environment variables"
+    "VITE_PUBLIC_GOOGLE_API_KEY is not set in environment variables"
   );
 }
 
@@ -16,12 +14,15 @@ export const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
 
 
 
-interface formProps {
+interface inputProps {
   userInput: string;
   setUserInput: (input: string) => void;
+  recipeOutput: string;
+  setRecipeOutput: any;
 }
 
-export default function IngredientsInput({ userInput, setUserInput }: formProps) {
+
+export default function IngredientsInput({ userInput, setUserInput, recipeOutput, setRecipeOutput }: inputProps) {
 
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
@@ -33,10 +34,12 @@ export default function IngredientsInput({ userInput, setUserInput }: formProps)
 
     (async () => {
       const prompt =
-        "Context: Give me a recipe that contains " +
-        userInput;
+        "Context: You will be giving a list of ingredients. You must create a recipe using these ingredients and send it to us. Do not give us a recipe to make one of the ingredients. Try and restrict the recipe to only the ingredients provided. " +
+        userInput + "Format the response as if it is a JSON object, with each step nested within another object."
       const result = await model.generateContent(prompt);
       console.log(result.response.text());
+      setRecipeOutput(result.response.text());
+      console.log("recipe output: " + recipeOutput);
     })();
     console.log("User input = " + userInput);
   }
