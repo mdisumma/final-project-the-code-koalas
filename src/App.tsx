@@ -17,7 +17,11 @@ function App() {
         recipeOutput={recipeOutput}
         setRecipeOutput={setRecipeOutput}
       />
-      <IngredientsOutput recipe_name={""} />
+      <IngredientsOutput
+        recipe_name={recipeOutput}
+        ingredients={[]}
+        steps={[]}
+      />
     </>
   );
 }
