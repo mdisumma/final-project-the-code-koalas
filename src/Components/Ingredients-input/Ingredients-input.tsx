@@ -1,7 +1,9 @@
 import { ChangeEvent, FormEvent } from 'react';
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
-const api_key = process.env.NEXT_PUBLIC_GOOGLE_API_KEY;
+const api_key = import.meta.env.VITE_PUBLIC_GOOGLE_API_KEY;
+
+console.log(api_key)
 
 if (!api_key) {
   throw new Error(
@@ -21,13 +23,22 @@ interface formProps {
 
 export default function IngredientsInput({ userInput, setUserInput }: formProps) {
 
+
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
     setUserInput(event.target.value);
   }
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    console.log(userInput);
+
+    (async () => {
+      const prompt =
+        "Context: Give me a recipe that contains " +
+        userInput;
+      const result = await model.generateContent(prompt);
+      console.log(result.response.text());
+    })();
+    console.log("User input = " + userInput);
   }
 
   return (
