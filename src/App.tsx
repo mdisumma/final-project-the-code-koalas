@@ -1,7 +1,7 @@
-import './App.css'
-import { useState } from 'react'
-import IngredientsInput from './Components/Ingredients-input/Ingredients-input';
-
+import "./App.css";
+import { useState } from "react";
+import IngredientsInput from "./components/Ingredients-input/Ingredients-input";
+import IngredientsOutput from "./components/Ingredients-output/Ingredients-output";
 // const [response, setResponse] = useState(""); // State for chat response
 
 function App() {
@@ -11,9 +11,15 @@ function App() {
   return (
     <>
       <div>Koalas rule</div>
-      <IngredientsInput userInput={userInput} setUserInput={setUserInput} recipeOutput={recipeOutput} setRecipeOutput={setRecipeOutput} />
+      <IngredientsInput
+        userInput={userInput}
+        setUserInput={setUserInput}
+        recipeOutput={recipeOutput}
+        setRecipeOutput={setRecipeOutput}
+      />
+      <IngredientsOutput recipe_name={""} />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
