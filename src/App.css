@@ -1,3 +1,63 @@
+:root {
+  --orange: #fbb02d;
+  --red: #fb6107;
+  --yellow: #f3de2c;
+  --lightGreen: #7cb518;
+  --darckGreen: #5c8001;
+  --white: #fff;
+}
+
+html {
+  font-size: 10px;
+}
+
 body {
+  margin: 0 auto;
+  max-width: 36rem;
+}
+
+/* header */
+.header {
+  background-color: var(--lightGreen);
+  height: 6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header-title {
+  color: var(--white);
   margin: 0;
+}
+
+/* input element */
+.input-form * {
+  box-sizing: border-box;
+}
+.user-input {
+  width: 24rem;
+  padding: 1rem;
+  border: none;
+  border-radius: 0.8rem 0 0 0.8rem;
+  background-color: var(--red);
+  font-size: 1.6rem;
+}
+.input-button {
+  width: 6rem;
+  padding: 1rem;
+  background-color: var(--darckGreen);
+  border: none;
+  color: var(--white);
+  border-radius: 0 0.8rem 0.8rem 0;
+  font-size: 1.6rem;
+}
+
+/* action button */
+.actionButton {
+  background-color: var(--darckGreen);
+  border: none;
+  color: var(--white);
+  padding: 1rem;
+  width: 30rem;
+  border-radius: 1.2rem;
+  font-size: 1.6rem;
 }

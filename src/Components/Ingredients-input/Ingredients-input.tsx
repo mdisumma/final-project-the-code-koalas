@@ -103,7 +103,7 @@ Example Output:
   }
 
   return (
-    <form className="input-row" onSubmit={handleSubmit}>
+    <form className="input-form" onSubmit={handleSubmit}>
       <input
         value={userInput}
         name="query"
@@ -111,7 +111,7 @@ Example Output:
         placeholder="What ingredients are in your fridge"
         className="user-input"
       />
-      <button className="button" type="submit">
+      <button className="input-button" type="submit">
         Add
       </button>
     </form>

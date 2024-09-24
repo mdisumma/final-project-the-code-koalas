@@ -1,7 +1,7 @@
 export default function Header() {
   return (
-    <header>
-      <h1>KoalaKitchen</h1>
+    <header className="header">
+      <h1 className="header-title">KoalaKitchen</h1>
     </header>
   );
 }
