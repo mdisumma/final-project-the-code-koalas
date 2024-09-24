@@ -19,12 +19,7 @@ interface inputProps {
   setRecipeOutput: any;
 }
 
-export default function IngredientsInput({
-  userInput,
-  setUserInput,
-  recipeOutput,
-  setRecipeOutput,
-}: inputProps) {
+export default function IngredientsInput({ userInput, setUserInput, recipeOutput, setRecipeOutput, }: inputProps) {
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
     setUserInput(event.target.value);
   }
