@@ -1,0 +1,11 @@
+App
+├── Header
+│   └── Fridge
+├── Main
+│   ├── IngredientsInput Form
+│   │   ├── Textbox
+│   │   └── Button
+│   ├── RecipeResults
+│   │   ├── RecipeCard
+│   │   └── RecipeCard
+└── Footer
