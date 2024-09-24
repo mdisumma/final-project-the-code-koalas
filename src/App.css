@@ -13,13 +13,14 @@ html {
 
 body {
   margin: 0 auto;
-  max-width: 36rem;
+  border: 1px solid red;
+  /* max-width: 36rem; */
 }
 
 /* header */
 .header {
   background-color: var(--lightGreen);
-  height: 6rem;
+  height: 15vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -29,6 +30,14 @@ body {
   margin: 0;
 }
 
+/* main container */
+.main-container {
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
 /* input element */
 .input-form * {
   box-sizing: border-box;
@@ -60,4 +69,15 @@ body {
   width: 30rem;
   border-radius: 1.2rem;
   font-size: 1.6rem;
+}
+
+/* footer */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--white);
+  font-size: 1.6rem;
+  background-color: var(--red);
+  height: 15vh;
 }

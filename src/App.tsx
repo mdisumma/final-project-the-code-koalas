@@ -18,18 +18,21 @@ function App() {
   return (
     <>
       <Header />
-      <IngredientsInput
-        userInput={userInput}
-        setUserInput={setUserInput}
-        recipeOutput={recipeOutput}
-        setRecipeOutput={setRecipeOutput}
-      />
-      <IngredientsOutput
-        recipe_name={recipeOutput}
-        ingredients={[]}
-        steps={[]}
-      />
-      <ActionButton text="Click me" onClick={handleClick} />
+      <div className="main-container">
+        <IngredientsInput
+          userInput={userInput}
+          setUserInput={setUserInput}
+          recipeOutput={recipeOutput}
+          setRecipeOutput={setRecipeOutput}
+        />
+        <IngredientsOutput
+          recipe_name={recipeOutput}
+          ingredients={[]}
+          steps={[]}
+        />
+        <ActionButton text="Click me" onClick={handleClick} />
+      </div>
+
       <Footer />
     </>
   );
