@@ -10,7 +10,7 @@ if (!api_key) {
 }
 
 const genAI = new GoogleGenerativeAI(api_key);
-export const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
+export const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
 interface inputProps {
   userInput: string;
@@ -35,7 +35,7 @@ export default function IngredientsInput({
     (async () => {
       const prompt =
         `Given a list of ingredients, please generate a recipe that includes the following details:
-1. The name of the recipe (recipe_name).
+1. The name of the recipe (recipe_name) and a description.
 2. A list of the provided ingredients used in the recipe (ingredients).
 3. A detailed list of steps to prepare the recipe (steps).
 
@@ -45,7 +45,11 @@ make sure the output does not include "\`\`\`json" or "\`\`\`"
 Please ensure the output matches the following format:
 
 {
-  "recipe_name": "Example Recipe Name",
+  "recipe_details": [
+    {"recipe_name": "Example Recipe Name",
+    "recipe_description": "Example recipe description here - keep it brief"
+    }
+  ]
   "ingredients": [
     "ingredient1",
     "ingredient2"
