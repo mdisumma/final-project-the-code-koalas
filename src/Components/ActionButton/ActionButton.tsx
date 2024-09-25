@@ -1,11 +1,10 @@
 // any is applied to the onClick functionality
 interface ActionButtonProps {
   text: string;
-
   onClick: () => void;
 }
 
-const ActionButton: React.FC<ActionButtonProps> = ({ text, onClick }) => {
+export default function ActionButton({ text, onClick }: ActionButtonProps) {
   return (
     <button className="actionButton" onClick={onClick}>
       {text}
@@ -13,4 +12,3 @@ const ActionButton: React.FC<ActionButtonProps> = ({ text, onClick }) => {
   );
 };
 
-export default ActionButton;

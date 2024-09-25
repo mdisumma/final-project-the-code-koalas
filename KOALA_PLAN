@@ -1,11 +1,14 @@
 App
-├── Header
-│   └── Fridge
-├── Main
-│   ├── IngredientsInput Form
-│   │   ├── Textbox
-│   │   └── Button
-│   ├── RecipeResults
-│   │   ├── RecipeCard
-│   │   └── RecipeCard
-└── Footer
+└─ App
+    ├─ Header
+    │  ├─ Title
+    │  └─ Logo
+    ├─ MainContent
+    │  ├─ UserInput
+    │  │  ├─ Legend
+    │  │  └─ InputBox + Button
+    │  └─ IngredientsList
+    │     ├─ Ingredient + Button
+    │     └─ ...
+    └─ Footer
+        └─ Check for recipes button

@@ -1,11 +1,11 @@
 import "./App.css";
 import { useState } from "react";
-import Header from "./Components/header/Header";
-import Koala from "./Components/koala/Koala";
-import IngredientsInput from "./Components/Ingredients-input/Ingredients-input";
-import IngredientsOutput from "./Components/Ingredients-output/Ingredients-output";
-import ActionButton from "./Components/action-button/ActionButton";
-import Footer from "./Components/footer/Footer";
+import Header from "./Components/Header/Header";
+import Koala from "./Components/Koala/Koala";
+import IngredientsInput from "./Components/Ingredients/Input/Input";
+import IngredientsOutput from "./Components/Recipes/Output/Output";
+import ActionButton from "./Components/ActionButton/ActionButton";
+import Footer from "./Components/Footer/Footer";
 // const [response, setResponse] = useState(""); // State for chat response
 
 function App() {
@@ -20,7 +20,7 @@ function App() {
     <>
       <Header />
 
-      <div className="main-container">
+      <main className="main-container">
         <Koala />
         <IngredientsInput
           userInput={userInput}
@@ -29,12 +29,10 @@ function App() {
           setRecipeOutput={setRecipeOutput}
         />
         <IngredientsOutput
-          recipe_name={recipeOutput}
-          ingredients={[]}
-          steps={[]}
+          recipe={recipeOutput}
         />
         <ActionButton text="Click me" onClick={handleClick} />
-      </div>
+      </main>
 
       <Footer />
     </>
