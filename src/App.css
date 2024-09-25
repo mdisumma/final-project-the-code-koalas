@@ -14,7 +14,6 @@ html {
 body {
   min-width: 32rem;
   margin: 0 auto;
-  border: 1px solid red;
   /* max-width: 36rem; */
 }
 
@@ -29,6 +28,7 @@ body {
 .header-title {
   color: var(--white);
   margin: 0;
+  font-size: 3rem;
 }
 
 /* main container */
@@ -55,6 +55,7 @@ body {
 .label-input {
   font-size: 1.6rem;
   display: block;
+  font-weight: bold;
   margin: 1rem 0;
 }
 .input-button {
@@ -74,7 +75,7 @@ body {
   color: var(--white);
   padding: 1rem;
   width: 30rem;
-  border-radius: 1.2rem;
+  border-radius: 0.8rem;
   font-size: 1.6rem;
 }
 
