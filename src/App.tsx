@@ -11,9 +11,11 @@ import Footer from "./Components/Footer/Footer";
 export default function App() {
   const [userInput, setUserInput] = useState("");
   const [recipeOutput, setRecipeOutput] = useState([]);
+  const [currentScreen, setCurrentScreen] = useState(0);
 
-  function handleClick() {
-    console.log("Button clicked");
+  function handleClick(i: number) {
+    console.log("Button clicked, screen:", i);
+    setCurrentScreen(i++);
   }
 
   return (
@@ -22,16 +24,28 @@ export default function App() {
 
       <main className="main-container">
         <Koala text={"how can I help"} />
-        <IngredientsInput
-          userInput={userInput}
-          setUserInput={setUserInput}
-          recipeOutput={recipeOutput}
-          setRecipeOutput={setRecipeOutput}
-        />
-        <RecipeSelection
-          recipe={recipeOutput}
-        />
-        <ActionButton text="Click me" onClick={handleClick} />
+        {currentScreen === 0 ? (
+          <div>
+            <IngredientsInput
+              userInput={userInput}
+              setUserInput={setUserInput}
+              recipeOutput={recipeOutput}
+              setRecipeOutput={setRecipeOutput}
+              currentScreen={currentScreen}
+              setCurrentScreen={setCurrentScreen}
+            />
+          </div>
+        ) : (
+          <div>
+            <RecipeSelection
+              currentScreen={currentScreen}
+              setCurrentScreen={setCurrentScreen}
+              recipe={recipeOutput}
+            />
+            <ActionButton text="Click me" onClick={() => handleClick(1)} disabled={false} />
+          </div>
+        )}
+
       </main>
 
       <Footer />

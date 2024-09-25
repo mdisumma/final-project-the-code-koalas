@@ -1,5 +1,6 @@
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState, useEffect } from "react";
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import ActionButton from "../../ActionButton/ActionButton";
 
 const api_key = import.meta.env.VITE_PUBLIC_GOOGLE_API_KEY;
 
@@ -17,18 +18,69 @@ interface inputProps {
   setUserInput: (input: string) => void;
   recipeOutput: any[];
   setRecipeOutput: any;
+  currentScreen: number;
+  setCurrentScreen: any;
 }
 
-export default function IngredientsInput({
-  userInput,
-  setUserInput,
-  recipeOutput,
-  setRecipeOutput,
-}: inputProps) {
+export default function IngredientsInput({ userInput, setUserInput, recipeOutput, setRecipeOutput, currentScreen, setCurrentScreen }: inputProps) {
   const [ingredients, setIngredients] = useState<string[]>([]);
+  const koala: any = document.getElementById('koala');
+
+  useEffect(() => {
+    const storedIngredients = localStorage.getItem("ingredients");
+    if (storedIngredients) {
+      setIngredients(JSON.parse(storedIngredients));
+    }
+  }, []);
 
   function updateIngredients(i: string) {
-    const newIngredients = [...ingredients, i];
+    if (i !== '') {
+      (async () => {
+        const prompt = `
+        You will be given a userInput value, to be compiled into an array of recipe ingredients. Respond with a JSON Object in the following pattern:
+        {
+          "pass": true/false,
+          "response": []
+        }
+        
+        If any ingredient in the userInput exists in this array (${ingredients.join(', ')}), then you should exclude it from the response. If all inputs are duplicates, then the response should fail.
+        
+        If the userInput value contains valid ingredients, capitalize each word, correct any spelling or grammatical errors, and then provide 'true' for the 'pass' property. The 'response' property should be an array of the corrected ingredients, excluding any ingredients that are already in the provided array.
+        
+        If there are multiple valid ingredients in the userInput, process all of them into the 'response' array.
+        
+        If the userInput value is invalid, then respond with 'false' for the 'pass' property and provide a reason why it was rejected under 'response'.
+        
+        Avoid the use of any formatting syntax such as \`\`\`json\`\`\`.
+        
+        This is the userInput value: ${i}
+        `;
+        try {
+          const result = await model.generateContent(prompt);
+          const responseText = await result.response.text();
+          const responseJson = JSON.parse(responseText);
+          setRecipeOutput(responseJson);
+
+          if (responseJson.pass === true) {
+            const correctedIngredients = responseJson.response;
+            const newIngredients = [...ingredients, ...correctedIngredients];
+            setIngredients(newIngredients);
+            localStorage.setItem("ingredients", JSON.stringify(newIngredients));
+            console.log('Ingredients: ' + newIngredients);
+          } else {
+            console.log('Invalid ingredient: ' + responseJson.response);
+          }
+
+          console.log("Recipe JSON:", responseJson);
+        } catch (error) {
+          console.error("Error generating content:", error);
+        }
+      })();
+    }
+  }
+
+  function removeIngredient(value: string) {
+    const newIngredients = ingredients.filter(ingredient => ingredient !== value);
     setIngredients(newIngredients);
     localStorage.setItem("ingredients", JSON.stringify(newIngredients));
     console.log('Ingredients: ' + newIngredients);
@@ -38,60 +90,58 @@ export default function IngredientsInput({
     setUserInput(event.target.value);
   }
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    updateIngredients(userInput);
-
+  function handleSubmit() {
+    koala.classList.add('spin');
+    setCurrentScreen(1);
+    console.log('Current screen: ' + currentScreen);
     (async () => {
       const prompt =
-        `Given a list of ingredients, please generate FIVE recipes that includes the following details:
-1. The name of the recipe (recipe_name) and a description.
-2. A list of the provided ingredients used in the recipe (ingredients).
-3. A detailed list of steps to prepare the recipe (steps).
-4. Do not include "\`\`\`json" or "\`\`\`" in the output.
-5. If given a single ingredient, create the best recipe you can with the fewest additional ingredients.
+        `Generate FIVE recipes based on the provided ingredients with the following details:
+1. Recipe name (recipe_name), a brief description (recipe_description), difficulty level (recipe_difficulty), total time to prepare (recipe_time), and required equipment (recipe_equipment).
+2. A list of the provided ingredients used in each recipe.
+3. Detailed preparation steps, each including a step number (step_number) and clear instruction (instruction).
 
-Each step should have a step number (step_number) indicating its order and a clear instruction (instruction) on what to do in that step.
-make sure the output does not include "\`\`\`json" or "\`\`\`"
-
-Please ensure the output matches the following format:
+Constraints:
+- Avoid the use of any formatting syntax such as \`\`\`json\`\`\`.
+- If only one ingredient is given, generate the best recipe possible using minimal additional ingredients.
+- Ensure the response is in the format of an array of objects, where each object represents a recipe with the following structure:
 
 [
   {
-    "recipe_details":
-      {
-    "recipe_name": "Example Recipe Name",
-      "recipe_description": "Example recipe description here - keep it brief",
-      "recipe_difficulty": "A difficulty rating of 'Easy', 'Medium' or 'Hard'",
-      "recipe_time": "A duration for how long the recipe takes to make in total.",
-      "recipe_equipment": "A list of equipment the user needs to create the meal, such as a blender."
-      },
+    "recipe_details": {
+      "recipe_name": "Example Recipe Name",
+      "recipe_description": "A brief description of the recipe.",
+      "recipe_difficulty": "Easy/Medium/Hard",
+      "recipe_time": "Total preparation time.",
+      "recipe_equipment": "Required kitchen equipment."
+    },
     "ingredients": [
       "ingredient1",
       "ingredient2"
-      // add more ingredients as needed
     ],
     "steps": [
       {
         "step_number": 1,
-        "instruction": "First step instruction."
+        "instruction": "Step 1 description."
       },
       {
         "step_number": 2,
-        "instruction": "Second step instruction."
+        "instruction": "Step 2 description."
       }
-      // add more steps as needed
     ]
   }
 ]
-` +
-        ingredients +
-        `Format the response as if it is an array, with each step nested within another object - Do not include \`\`\`json" or "\`\`\`" in the output.`;
+
+Please use the following ingredients: ${ingredients}.
+Remember to format the response as an array of objects.`;
+
       try {
         const result = await model.generateContent(prompt);
-        const responseText = result.response.text();
+        const responseText = await result.response.text();
+        // console.log('Response = ' + result.response.text())
         const responseJson = JSON.parse(responseText);
         setRecipeOutput(responseJson);
+        koala.classList.remove('spin');
 
         console.log("Recipe JSON:", responseJson);
         console.log("Recipe output updated:", recipeOutput);
@@ -101,9 +151,15 @@ Please ensure the output matches the following format:
     })();
   }
 
+  function handleAddIngredient(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    updateIngredients(userInput);
+    setUserInput('');
+  }
+
   return (
     <>
-      <form className="input-form" onSubmit={handleSubmit}>
+      <form className="input-form" onSubmit={handleAddIngredient}>
         <label className="label-input" htmlFor="query">
           Ingredients:
         </label>
@@ -118,10 +174,13 @@ Please ensure the output matches the following format:
           Add
         </button>
       </form>
-      {ingredients.map((ingredients) =>
-      (
-        <span>{ingredients}</span>
+      {ingredients.map((ingredient, index) => (
+        <div key={index}>
+          <span>{ingredient}</span>
+          <span onClick={() => removeIngredient(ingredient)}>❌</span>
+        </div>
       ))}
+      < ActionButton text={ingredients.length !== 0 ? 'Find me a recipe' : 'Add an ingredient'} onClick={handleSubmit} disabled={ingredients.length === 0} />
     </>
   );
 }
