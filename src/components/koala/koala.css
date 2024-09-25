@@ -32,12 +32,12 @@
 #left-hear {
   transform-origin: bottom right;
   animation: turn-bottom-right 1s;
-  animation-iteration-count: 10;
+  animation-iteration-count: 5;
 }
 #right-hear {
   transform-origin: bottom left;
   animation: turn-bottom-left 1s;
-  animation-iteration-count: 10;
+  animation-iteration-count: 5;
 }
 
 .cls-1 {
