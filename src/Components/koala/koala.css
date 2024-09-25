@@ -98,12 +98,21 @@
 .cls-8 {
   fill: #7cb518;
 }
-
-.koala-talck {
-  padding: 1rem;
+.speach-box {
+  position: relative;
   background-color: var(--white);
   margin: 0 2rem;
-  color: var(--red);
-  font-size: 1.6rem;
   font-weight: 800;
+  padding: 1rem;
+}
+.speach-text {
+  font-size: 1.6rem;
+  color: var(--red);
+}
+#speach-spike {
+  fill: var(--red);
+  position: absolute;
+  bottom: -45px;
+  left: -100px;
+  width: 12rem;
 }
