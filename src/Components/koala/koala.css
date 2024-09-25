@@ -12,7 +12,11 @@
     transform: rotate(0);
   }
 }
-
+.koala-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
 .cls-1 {
   stroke-width: 2px;
 }
@@ -50,4 +54,12 @@
 .cls-6 {
   animation: turn 2s 2;
   fill: #7cb518;
+}
+.koala-talck {
+  padding: 1rem;
+  background-color: var(--white);
+  margin: 0 2rem;
+  color: var(--red);
+  font-size: 1.6rem;
+  font-weight: 800;
 }
