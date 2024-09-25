@@ -1,4 +1,4 @@
-import "./koala.css";
+import "./Koala.css";
 
 export default function Koala() {
   return (
