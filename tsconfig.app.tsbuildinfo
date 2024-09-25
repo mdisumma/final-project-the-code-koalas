@@ -1,0 +1,1 @@
+{"root":["./src/app.tsx","./src/main.tsx","./src/vite-env.d.ts","./src/components/ingredients-input/ingredients-input.tsx","./src/components/ingredients-output/ingredients-output.tsx","./src/components/action-button/actionbutton.tsx","./src/components/footer/footer.tsx","./src/components/header/header.tsx","./src/components/koala/koala.tsx"],"version":"5.6.2"}

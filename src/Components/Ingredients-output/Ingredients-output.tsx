@@ -1,5 +1,5 @@
 interface outputProps {
-  recipe_name: string;
+  recipe_name: any[];
   ingredients: string[];
   steps: object[];
 }
@@ -9,7 +9,11 @@ export default function IngredientsOutput({
 }: outputProps): JSX.Element {
   return (
     <section>
-      <h2>{recipe_name}</h2>
+      <h2>
+        {recipe_name.map((recipe, index) => (
+          <div key={index}>{recipe.recipe_details.recipe_name}</div>
+        ))}
+      </h2>
     </section>
   );
 }

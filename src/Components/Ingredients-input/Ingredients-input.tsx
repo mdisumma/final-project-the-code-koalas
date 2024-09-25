@@ -15,7 +15,7 @@ export const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 interface inputProps {
   userInput: string;
   setUserInput: (input: string) => void;
-  recipeOutput: string;
+  recipeOutput: any[];
   setRecipeOutput: any;
 }
 
@@ -46,16 +46,16 @@ make sure the output does not include "\`\`\`json" or "\`\`\`"
 
 Please ensure the output matches the following format:
 
-{
-  "recipe_1": {
-    "recipe_details": [
-      {"recipe_name": "Example Recipe Name",
+[
+  {
+    "recipe_details":
+      {
+    "recipe_name": "Example Recipe Name",
       "recipe_description": "Example recipe description here - keep it brief",
       "recipe_difficulty": "A difficulty rating of 'Easy', 'Medium' or 'Hard'",
       "recipe_time": "A duration for how long the recipe takes to make in total.",
       "recipe_equipment": "A list of equipment the user needs to create the meal, such as a blender."
-      }
-    ]
+      },
     "ingredients": [
       "ingredient1",
       "ingredient2"
@@ -73,43 +73,18 @@ Please ensure the output matches the following format:
       // add more steps as needed
     ]
   }
-}
-
-Example Output:
-
-{
-  "recipe_name": "Buttered Toast",
-  "ingredients": [
-    "bread",
-    "butter"
-  ],
-  "steps": [
-    {
-      "step_number": 1,
-      "instruction": "Place a slice of bread in the toaster and toast to your desired level of brownness."
-    },
-    {
-      "step_number": 2,
-      "instruction": "Remove the toasted bread from the toaster."
-    },
-    {
-      "step_number": 3,
-      "instruction": "While the toast is still warm, spread butter evenly over the surface."
-    },
-    {
-      "step_number": 4,
-      "instruction": "Serve immediately and enjoy!"
-    }
-  ]
-}
+]
 ` +
         userInput +
-        `Format the response as if it is a JSON object, with each step nested within another object - Do not include \`\`\`json" or "\`\`\`" in the output.`;
+        `Format the response as if it is an array, with each step nested within another object - Do not include \`\`\`json" or "\`\`\`" in the output.`;
       try {
         const result = await model.generateContent(prompt);
-        const responseText = await result.response.text();
-        setRecipeOutput(responseText);
-        console.log("Recipe output updated:", responseText);
+        const responseText = result.response.text();
+        const responseJson = JSON.parse(responseText);
+        setRecipeOutput(responseJson);
+        
+        console.log("Recipe JSON:", responseJson);
+        console.log("Recipe output updated:", recipeOutput);
       } catch (error) {
         console.error("Error generating content:", error);
       }

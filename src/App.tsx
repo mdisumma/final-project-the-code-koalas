@@ -1,16 +1,16 @@
 import "./App.css";
 import { useState } from "react";
-import Header from "./components/header/Header";
-import Koala from "./components/koala/Koala";
-import IngredientsInput from "./components/Ingredients-input/Ingredients-input";
-import IngredientsOutput from "./components/Ingredients-output/Ingredients-output";
-import ActionButton from "./components/ActionButton";
-import Footer from "./components/footer/Footer";
+import Header from "./Components/header/Header";
+import Koala from "./Components/koala/Koala";
+import IngredientsInput from "./Components/Ingredients-input/Ingredients-input";
+import IngredientsOutput from "./Components/Ingredients-output/Ingredients-output";
+import ActionButton from "./Components/action-button/ActionButton";
+import Footer from "./Components/footer/Footer";
 // const [response, setResponse] = useState(""); // State for chat response
 
 function App() {
-  const [userInput, setUserInput] = useState("Hi there!");
-  const [recipeOutput, setRecipeOutput] = useState("");
+  const [userInput, setUserInput] = useState("");
+  const [recipeOutput, setRecipeOutput] = useState([]);
 
   function handleClick() {
     console.log("Button clicked");
