@@ -26,8 +26,8 @@
 }
 .koala-container {
   display: flex;
-  align-items: center;
-  justify-content: flex-end;
+  align-items: flex-start;
+  justify-content: center;
 }
 #left-hear {
   transform-origin: bottom right;
@@ -101,7 +101,7 @@
 .speach-box {
   position: relative;
   background-color: var(--white);
-  margin: 0 2rem;
+  margin: 2rem;
   padding: 1rem;
   border-radius: 0.8rem;
 }
