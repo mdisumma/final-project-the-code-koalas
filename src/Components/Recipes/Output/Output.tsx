@@ -1,4 +1,4 @@
-import ListItem from "./components/ListItem/ListItem";
+import ListItem from "../../ListItem/ListItem";
 
 interface outputProps {
   recipe: any[];
