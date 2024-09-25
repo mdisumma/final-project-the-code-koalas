@@ -1,6 +1,6 @@
 import "./Koala.css";
 
-export default function Koala({ text }) {
+export default function Koala({ text }: any) {
   return (
     <div className="koala-container">
       <svg
