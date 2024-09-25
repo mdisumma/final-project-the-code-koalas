@@ -15,9 +15,11 @@ interface Recipe {
 
 interface outputProps {
   recipe: Recipe[];
+  currentScreen: number;
+  setCurrentScreen: (screen: number) => void;
 }
 
-export default function RecipeSelection({ recipe }: outputProps) {
+export default function RecipeSelection({ recipe, currentScreen, setCurrentScreen }: outputProps) {
   const defaultRecipe: Recipe = {
     recipe_details: {
       recipe_name: '',
@@ -28,25 +30,24 @@ export default function RecipeSelection({ recipe }: outputProps) {
   };
 
   const [selectedRecipe, setSelectedRecipe] = useState<Recipe>(defaultRecipe);
-  const [currentScreen, setCurrentScreen] = useState(0);
 
   function handleClick(index: number) {
     console.log('Clicked' + index);
-    setCurrentScreen(1);
+    setCurrentScreen((currentScreen === 0 ? 1 : 2));
     setSelectedRecipe(recipe[index]);
   }
 
   return (
     <section>
-      {currentScreen === 0 ? (
+      {currentScreen === 1 ? (
         recipe.map((recipeItem, index) => (
           <span onClick={() => handleClick(index)} key={index}>
             <ListItem recipe_name={recipeItem.recipe_details.recipe_name} />
           </span>
         ))
-      ) : (
+      ) : (currentScreen === 2 ? (
         <Recipe selectedRecipe={selectedRecipe} />
-      )}
+      ) : "Whoops")}
     </section>
   );
 }
