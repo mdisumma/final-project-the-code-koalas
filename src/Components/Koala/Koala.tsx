@@ -1,6 +1,6 @@
 import "./Koala.css";
 
-export default function Koala() {
+export default function Koala({ text }) {
   return (
     <div className="koala-container">
       <svg
@@ -101,7 +101,7 @@ export default function Koala() {
         />
       </svg>
       <div className="speach-box">
-        <span className="speach-text">I am here to help</span>
+        <span className="speach-text">{text}</span>
         <svg
           id="speach-spike"
           xmlns="http://www.w3.org/2000/svg"

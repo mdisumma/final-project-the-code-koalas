@@ -108,7 +108,7 @@
 .speach-text {
   font-size: 1.6rem;
   color: var(--red);
-  font-weight: 800;
+  font-weight: 400;
 }
 #speach-spike {
   fill: var(--white);

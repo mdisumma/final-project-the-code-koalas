@@ -21,16 +21,14 @@ export default function App() {
       <Header />
 
       <main className="main-container">
-        <Koala />
+        <Koala text={"how can I help"} />
         <IngredientsInput
           userInput={userInput}
           setUserInput={setUserInput}
           recipeOutput={recipeOutput}
           setRecipeOutput={setRecipeOutput}
         />
-        <IngredientsOutput
-          recipe={recipeOutput}
-        />
+        <IngredientsOutput recipe={recipeOutput} />
         <ActionButton text="Click me" onClick={handleClick} />
       </main>
 
@@ -38,4 +36,3 @@ export default function App() {
     </>
   );
 }
-
