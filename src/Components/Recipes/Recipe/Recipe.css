@@ -19,6 +19,7 @@
 }
 /* steps */
 .recipie-steps-container {
+  border-radius: 1rem;
   margin-top: 1rem;
   width: 28rem;
   display: flex;

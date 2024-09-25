@@ -3,7 +3,7 @@
 :root {
   --orange: #fbb02d;
   --red: #fb6107;
-  --yellow: #f3de2c;
+  --yellow: #f2e787;
   --lightGreen: #7cb518;
   --darckGreen: #5c8001;
   --white: #fff;
@@ -23,35 +23,32 @@ body {
 
 /* header */
 .header {
-  background-color: var(--lightGreen);
-  height: 6rem;
+  background-color: var(--darckGreen);
+  height: 8rem;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 .header-title {
   color: var(--white);
   margin: 0;
-  font-size: 3rem;
+  font-size: 4rem;
 }
 
 /* main container */
 .main-container {
-  height: calc(100vh - 12rem);
+  min-height: calc(100vh - 14rem);
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
   background-color: var(--yellow);
 }
-
 /* input element */
 .input-form * {
   box-sizing: border-box;
   font-family: "Rubik", sans-serif;
 }
-
 .user-input {
   width: 24rem;
   padding: 1rem;
@@ -60,14 +57,12 @@ body {
   background-color: var(--white);
   font-size: 1.4rem;
 }
-
 .label-input {
   font-size: 1.4rem;
   display: block;
   font-weight: 600;
   margin: 1rem 0;
 }
-
 .input-button {
   width: 6rem;
   padding: 1rem;
