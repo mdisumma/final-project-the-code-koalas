@@ -40,11 +40,15 @@ export default function RecipeSelection({ recipe, currentScreen, setCurrentScree
   return (
     <section>
       {currentScreen === 1 ? (
-        recipe.map((recipeItem, index) => (
-          <span onClick={() => handleClick(index)} key={index}>
-            <ListItem recipe_name={recipeItem.recipe_details.recipe_name} />
-          </span>
-        ))
+        Array.isArray(recipe) && recipe.length > 0 ? (
+          recipe.map((recipeItem, index) => (
+            <span onClick={() => handleClick(index)} key={index}>
+              <ListItem recipe_name={recipeItem.recipe_details.recipe_name} />
+            </span>
+          ))
+        ) : (
+          <p>No recipes available</p>
+        )
       ) : (currentScreen === 2 ? (
         <Recipe selectedRecipe={selectedRecipe} />
       ) : "Whoops")}

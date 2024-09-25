@@ -12,6 +12,7 @@ export default function App() {
   const [userInput, setUserInput] = useState("");
   const [recipeOutput, setRecipeOutput] = useState([]);
   const [currentScreen, setCurrentScreen] = useState(0);
+  const [koalaText, setKoalaText] = useState("");
 
   function handleClick(i: number) {
     console.log("Button clicked, screen:", i);
@@ -23,7 +24,7 @@ export default function App() {
       <Header />
 
       <main className="main-container">
-        <Koala text={"how can I help"} />
+        <Koala koalaText={koalaText} />
         {currentScreen === 0 ? (
           <div>
             <IngredientsInput
@@ -33,6 +34,7 @@ export default function App() {
               setRecipeOutput={setRecipeOutput}
               currentScreen={currentScreen}
               setCurrentScreen={setCurrentScreen}
+              setKoalaText={setKoalaText}
             />
           </div>
         ) : (

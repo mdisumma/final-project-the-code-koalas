@@ -20,10 +20,12 @@ interface inputProps {
   setRecipeOutput: any;
   currentScreen: number;
   setCurrentScreen: any;
+  setKoalaText: any;
 }
 
-export default function IngredientsInput({ userInput, setUserInput, recipeOutput, setRecipeOutput, currentScreen, setCurrentScreen }: inputProps) {
+export default function IngredientsInput({ userInput, setUserInput, recipeOutput, setRecipeOutput, currentScreen, setCurrentScreen, setKoalaText }: inputProps) {
   const [ingredients, setIngredients] = useState<string[]>([]);
+  const [responseState, setResponseState] = useState(0);
   const koala: any = document.getElementById('koala');
 
   useEffect(() => {
@@ -40,29 +42,43 @@ export default function IngredientsInput({ userInput, setUserInput, recipeOutput
         You will be given a userInput value, to be compiled into an array of recipe ingredients. Respond with a JSON Object in the following pattern:
         {
           "pass": true/false,
-          "response": []
+          "output": []
+          "response": ""
         }
         
-        If any ingredient in the userInput exists in this array (${ingredients.join(', ')}), then you should exclude it from the response. If all inputs are duplicates, then the response should fail.
+
+        Here’s a reworded version of your prompt for clarity and precision:
+
+        If any ingredient in the userInput matches an item from the array (${ingredients.join(', ')}), exclude it from the output. If all ingredients are duplicates, return a failure response.
         
-        If the userInput value contains valid ingredients, capitalize each word, correct any spelling or grammatical errors, and then provide 'true' for the 'pass' property. The 'response' property should be an array of the corrected ingredients, excluding any ingredients that are already in the provided array.
+        For valid ingredients in the userInput:
         
-        If there are multiple valid ingredients in the userInput, process all of them into the 'response' array.
+        Capitalize each word, correct spelling or grammar, and assign true to the pass property.
+        The output property should be an array of the corrected ingredients, excluding any that already exist in the provided array.
+        If there are multiple valid ingredients, include all in the output array.
+        If the userInput is invalid:
         
-        If the userInput value is invalid, then respond with 'false' for the 'pass' property and provide a reason why it was rejected under 'response'.
+        Set pass to false and provide a reason for the rejection under the response property.
+        If successful, return a confirmation message that the ingredient(s) have been added to the list, specifying which ingredient(s) were processed. In case of invalid input, clearly state the issue with the invalid entry.
         
-        Avoid the use of any formatting syntax such as \`\`\`json\`\`\`.
+        Avoid using any formatting syntax like \`\`\`json\`\`\`.
+        
+        The prompt passes if at least one word is a valid ingredient.
         
         This is the userInput value: ${i}
         `;
         try {
+          setResponseState(1)
+          console.log('Waiting for Response...' + responseState)
           const result = await model.generateContent(prompt);
           const responseText = await result.response.text();
           const responseJson = JSON.parse(responseText);
           setRecipeOutput(responseJson);
+          setResponseState(0);
+          console.log('Response Received.' + responseState);
 
           if (responseJson.pass === true) {
-            const correctedIngredients = responseJson.response;
+            const correctedIngredients = responseJson.output;
             const newIngredients = [...ingredients, ...correctedIngredients];
             setIngredients(newIngredients);
             localStorage.setItem("ingredients", JSON.stringify(newIngredients));
@@ -70,8 +86,9 @@ export default function IngredientsInput({ userInput, setUserInput, recipeOutput
           } else {
             console.log('Invalid ingredient: ' + responseJson.response);
           }
-
           console.log("Recipe JSON:", responseJson);
+          // console.log("Koala Says:", koalaText);
+          setKoalaText(responseJson.response)
         } catch (error) {
           console.error("Error generating content:", error);
         }
@@ -90,13 +107,15 @@ export default function IngredientsInput({ userInput, setUserInput, recipeOutput
     setUserInput(event.target.value);
   }
 
-  function handleSubmit() {
+  async function handleSubmit() {
     koala.classList.add('spin');
     setCurrentScreen(1);
+    setKoalaText(`Discovering new recipes...`)
     console.log('Current screen: ' + currentScreen);
-    (async () => {
-      const prompt =
-        `Generate FIVE recipes based on the provided ingredients with the following details:
+    if (responseState === 0) {
+      try {
+        const prompt =
+          `Generate FIVE recipes based on the provided ingredients with the following details:
 1. Recipe name (recipe_name), a brief description (recipe_description), difficulty level (recipe_difficulty), total time to prepare (recipe_time), and required equipment (recipe_equipment).
 2. A list of the provided ingredients used in each recipe.
 3. Detailed preparation steps, each including a step number (step_number) and clear instruction (instruction).
@@ -135,12 +154,15 @@ Constraints:
 Please use the following ingredients: ${ingredients}.
 Remember to format the response as an array of objects.`;
 
-      try {
+        setResponseState(1);
+        console.log('Waiting for Response...' + responseState);
+        console.log('Creating recipe prompt using: ' + ingredients);
         const result = await model.generateContent(prompt);
         const responseText = await result.response.text();
-        // console.log('Response = ' + result.response.text())
         const responseJson = JSON.parse(responseText);
         setRecipeOutput(responseJson);
+        setResponseState(0);
+        console.log('Response Received.' + responseState);
         koala.classList.remove('spin');
 
         console.log("Recipe JSON:", responseJson);
@@ -148,9 +170,8 @@ Remember to format the response as an array of objects.`;
       } catch (error) {
         console.error("Error generating content:", error);
       }
-    })();
+    }
   }
-
   function handleAddIngredient(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     updateIngredients(userInput);
@@ -180,7 +201,7 @@ Remember to format the response as an array of objects.`;
           <span onClick={() => removeIngredient(ingredient)}>❌</span>
         </div>
       ))}
-      < ActionButton text={ingredients.length !== 0 ? 'Find me a recipe' : 'Add an ingredient'} onClick={handleSubmit} disabled={ingredients.length === 0} />
+      < ActionButton text={ingredients.length !== 0 ? 'Find me a recipe' : 'Add an ingredient'} onClick={handleSubmit} disabled={ingredients.length === 0 || responseState === 1} />
     </>
   );
 }

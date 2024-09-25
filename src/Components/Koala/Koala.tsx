@@ -1,6 +1,6 @@
 import "./Koala.css";
 
-export default function Koala({ text }: any) {
+export default function Koala({ koalaText }: any) {
   return (
     <div className="koala-container">
       <svg
@@ -100,19 +100,21 @@ export default function Koala({ text }: any) {
           d="M229.52,197.48s-8.63,24.75-25.8,24.75-26.24-24.75-26.24-24.75c0,0,9.06,4.35,26.24,4.35s25.8-4.35,25.8-4.35Z"
         />
       </svg>
-      <div className="speach-box">
-        <span className="speach-text">{text}</span>
-        <svg
-          id="speach-spike"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 589.89 361.27"
-        >
-          <polygon
-            className="koala-speach"
-            points="473 214 523 142.35 589.89 142.35 473 214"
-          />
-        </svg>
-      </div>
+      {koalaText !== '' ? (
+        <div className="speach-box">
+          <span className="speach-text">{koalaText}</span>
+          <svg
+            id="speach-spike"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 589.89 361.27"
+          >
+            <polygon
+              className="koala-speach"
+              points="473 214 523 142.35 589.89 142.35 473 214"
+            />
+          </svg>
+        </div>
+      ) : ''}
     </div>
   );
 }
