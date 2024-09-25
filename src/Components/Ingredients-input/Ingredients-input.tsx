@@ -19,7 +19,12 @@ interface inputProps {
   setRecipeOutput: any;
 }
 
-export default function IngredientsInput({ userInput, setUserInput, recipeOutput, setRecipeOutput, }: inputProps) {
+export default function IngredientsInput({
+  userInput,
+  setUserInput,
+  recipeOutput,
+  setRecipeOutput,
+}: inputProps) {
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
     setUserInput(event.target.value);
   }
@@ -114,6 +119,9 @@ Example Output:
 
   return (
     <form className="input-form" onSubmit={handleSubmit}>
+      <label className="label-input" htmlFor="query">
+        Ingredients:
+      </label>
       <input
         value={userInput}
         name="query"

@@ -1,8 +1,8 @@
 export default function Footer() {
   return (
     <footer className="footer">
-      <span>Created by the KoalaKitchen team</span>{" "}
-      <span>Powered by GoogleGenerativeAI</span>
+      <div>Created by the KoalaKitchen team</div>{" "}
+      <div>Powered by GoogleGenerativeAI</div>
     </footer>
   );
 }

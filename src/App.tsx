@@ -1,6 +1,7 @@
 import "./App.css";
 import { useState } from "react";
 import Header from "./components/header/Header";
+import Koala from "./components/koala/Koala";
 import IngredientsInput from "./components/Ingredients-input/Ingredients-input";
 import IngredientsOutput from "./components/Ingredients-output/Ingredients-output";
 import ActionButton from "./components/ActionButton";
@@ -18,7 +19,9 @@ function App() {
   return (
     <>
       <Header />
+
       <div className="main-container">
+        <Koala />
         <IngredientsInput
           userInput={userInput}
           setUserInput={setUserInput}

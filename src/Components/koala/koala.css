@@ -1,0 +1,53 @@
+#koala {
+  width: 10rem;
+}
+@keyframes turn {
+  0% {
+    transform: rotate(0);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
+
+.cls-1 {
+  stroke-width: 2px;
+}
+
+.cls-1,
+.cls-2,
+.cls-3,
+.cls-4,
+.cls-5,
+.cls-6 {
+  stroke: #000;
+  stroke-miterlimit: 10;
+}
+
+.belly {
+  fill: #f3de2c;
+}
+
+.cls-3 {
+  stroke-width: 2px;
+}
+
+.cls-7 {
+  fill: #e6e6e6;
+}
+
+.cls-4 {
+  fill: #5c8001;
+}
+
+.cls-5 {
+  fill: #fb6107;
+}
+
+.cls-6 {
+  animation: turn 2s 2;
+  fill: #7cb518;
+}
