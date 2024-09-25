@@ -29,8 +29,8 @@ Make flowchart
 
 - Save the file
 - Close the file in editor
-- Make it executable via terminal `chmod +x pre-commit`
-- Test commit `git commit -m "pre commit hook test"`
+- Make it executable via terminal (bash) `chmod +x pre-commit`
+- Test a commit
 
 
 
