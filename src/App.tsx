@@ -11,11 +11,11 @@ import Footer from "./Components/Footer/Footer";
 export default function App() {
   const [userInput, setUserInput] = useState("");
   const [recipeOutput, setRecipeOutput] = useState([]);
-    
+
   function handleClick() {
     console.log("Button clicked");
   }
-    
+
   return (
     <>
       <Header />
@@ -35,8 +35,6 @@ export default function App() {
       </main>
 
       <Footer />
-      <div>Koalas rule</div>
-      <IngredientsInput userInput={userInput} setUserInput={setUserInput} />
     </>
   );
 }
