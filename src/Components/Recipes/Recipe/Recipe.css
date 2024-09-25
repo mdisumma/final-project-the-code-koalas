@@ -1,0 +1,35 @@
+.recipie-element {
+  background-color: var(--white);
+  padding: 1rem;
+  width: 28rem;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.4rem;
+  border-radius: 1rem;
+}
+/* details */
+.details-element p {
+  font-size: 1.4rem;
+  margin: 0.6rem 0;
+}
+.recipie-element h1 {
+  color: var(--red);
+  margin: 0.6rem 0;
+  font-size: 1.6rem;
+}
+/* steps */
+.recipie-steps-container {
+  margin-top: 1rem;
+  width: 28rem;
+  display: flex;
+  overflow: scroll;
+  border: 1px solid var(--darckGreen);
+}
+.recipie-step-number {
+  color: var(--red);
+}
+.recipie-step {
+  flex-basis: 26rem;
+  flex-shrink: 0;
+  padding: 1rem;
+}
