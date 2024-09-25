@@ -11,8 +11,7 @@ export default function ListItem({ recipe_name }: ListItemProps) {
   return (
     <div className="listItem">
       <h2>{recipe_name}</h2>
-      {/* <p>{recipe_description}</p> */}
-      <br />
+      <span>Try</span>
     </div>
   );
 }
