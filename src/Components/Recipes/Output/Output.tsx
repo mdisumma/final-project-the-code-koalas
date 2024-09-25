@@ -7,8 +7,9 @@ interface outputProps {
 }
 
 export default function IngredientsOutput({ recipe }: outputProps) {
-  const [selectedRecipe, setSelectedRecipe] = useState(null);
+  const [selectedRecipe, setSelectedRecipe] = useState({});
   const [currentScreen, setCurrentScreen] = useState(0);
+
   function handleClick(index: number) {
     console.log('Clicked' + index)
     setCurrentScreen(1)
@@ -24,7 +25,6 @@ export default function IngredientsOutput({ recipe }: outputProps) {
             key={index}>
             <ListItem
               recipe_name={recipeItem.recipe_details.recipe_name}
-            // chosen_recipe={recipeItem[index]}
             />
           </span>)
         )
