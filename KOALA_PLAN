@@ -7,7 +7,12 @@ App
     │  ├─ UserInput
     │  │  ├─ Legend
     │  │  └─ InputBox + Button
-    │  └─ IngredientsList
+    │  ├─  Recipes
+    │  │  ├─ List Items
+    │  │  └─ Recipe 
+    │  │  │  ├─  Details
+    │  │  │  └─  Steps
+    │  └─ IngredientsList 
     │     ├─ Ingredient + Button
     │     └─ ...
     └─ Footer

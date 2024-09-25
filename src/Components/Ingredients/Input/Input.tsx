@@ -118,10 +118,10 @@ Please ensure the output matches the following format:
           Add
         </button>
       </form>
-      {/* {ingredients.map((ingredients) =>
+      {ingredients.map((ingredients) =>
       (
         <span>{ingredients}</span>
-      ))} */}
+      ))}
     </>
   );
 }

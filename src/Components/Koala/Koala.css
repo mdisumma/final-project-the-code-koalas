@@ -131,6 +131,7 @@
 }
 
 
+/* 
 #koala {
   transform: rotate(0deg);
   animation: spin 5s infinite;
@@ -144,4 +145,5 @@
   100% {
     transform: rotate(360deg);
   }
-}
+} 
+*/
