@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const api_key = import.meta.env.VITE_PUBLIC_GOOGLE_API_KEY;
@@ -25,12 +25,22 @@ export default function IngredientsInput({
   recipeOutput,
   setRecipeOutput,
 }: inputProps) {
+  const [ingredients, setIngredients] = useState<string[]>([]);
+
+  function updateIngredients(i: string) {
+    const newIngredients = [...ingredients, i];
+    setIngredients(newIngredients);
+    localStorage.setItem("ingredients", JSON.stringify(newIngredients));
+    console.log('Ingredients: ' + newIngredients);
+  }
+
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
     setUserInput(event.target.value);
   }
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    updateIngredients(userInput);
 
     (async () => {
       const prompt =
@@ -75,38 +85,43 @@ Please ensure the output matches the following format:
   }
 ]
 ` +
-        userInput +
+        ingredients +
         `Format the response as if it is an array, with each step nested within another object - Do not include \`\`\`json" or "\`\`\`" in the output.`;
       try {
         const result = await model.generateContent(prompt);
         const responseText = result.response.text();
         const responseJson = JSON.parse(responseText);
         setRecipeOutput(responseJson);
-        
+
         console.log("Recipe JSON:", responseJson);
         console.log("Recipe output updated:", recipeOutput);
       } catch (error) {
         console.error("Error generating content:", error);
       }
     })();
-    console.log("User input = " + userInput);
   }
 
   return (
-    <form className="input-form" onSubmit={handleSubmit}>
-      <label className="label-input" htmlFor="query">
-        Ingredients:
-      </label>
-      <input
-        value={userInput}
-        name="query"
-        onChange={handleChange}
-        placeholder="What ingredients are in your fridge"
-        className="user-input"
-      />
-      <button className="input-button" type="submit">
-        Add
-      </button>
-    </form>
+    <>
+      <form className="input-form" onSubmit={handleSubmit}>
+        <label className="label-input" htmlFor="query">
+          Ingredients:
+        </label>
+        <input
+          value={userInput}
+          name="query"
+          onChange={handleChange}
+          placeholder="What ingredients are in your fridge"
+          className="user-input"
+        />
+        <button className="input-button" type="submit">
+          Add
+        </button>
+      </form>
+      {ingredients.map((ingredients) =>
+      (
+        <span>{ingredients}</span>
+      ))}
+    </>
   );
 }
