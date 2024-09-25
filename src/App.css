@@ -67,7 +67,10 @@ body {
   border-radius: 0 0.8rem 0.8rem 0;
   font-size: 1.6rem;
 }
-
+/* listItem */
+.listItem {
+  background-color: var(--red);
+}
 /* action button */
 .actionButton {
   background-color: var(--darckGreen);
