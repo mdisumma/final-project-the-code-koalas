@@ -28,9 +28,7 @@ export default function App() {
           recipeOutput={recipeOutput}
           setRecipeOutput={setRecipeOutput}
         />
-        <IngredientsOutput
-          recipe={recipeOutput}
-        />
+        <IngredientsOutput recipe={recipeOutput} />
         <ActionButton text="Click me" onClick={handleClick} />
       </main>
 
@@ -38,4 +36,3 @@ export default function App() {
     </>
   );
 }
-

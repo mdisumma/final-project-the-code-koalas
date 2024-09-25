@@ -69,7 +69,13 @@ body {
 }
 /* listItem */
 .listItem {
-  background-color: var(--red);
+  margin: 0.5rem;
+  display: flex;
+  justify-content: center;
+  color: var(--red);
+  width: 30rem;
+  border-radius: 0.8rem;
+  background-color: var(--white);
 }
 /* action button */
 .actionButton {
