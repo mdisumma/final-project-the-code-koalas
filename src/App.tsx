@@ -21,7 +21,7 @@ export default function App() {
       <Header />
 
       <main className="main-container">
-        <Koala />
+        <Koala text={"how can I help"} />
         <IngredientsInput
           userInput={userInput}
           setUserInput={setUserInput}
