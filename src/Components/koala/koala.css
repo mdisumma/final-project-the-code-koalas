@@ -102,17 +102,18 @@
   position: relative;
   background-color: var(--white);
   margin: 0 2rem;
-  font-weight: 800;
   padding: 1rem;
+  border-radius: 0.8rem;
 }
 .speach-text {
   font-size: 1.6rem;
   color: var(--red);
+  font-weight: 800;
 }
 #speach-spike {
-  fill: var(--red);
+  fill: var(--white);
   position: absolute;
-  bottom: -45px;
+  bottom: -43px;
   left: -100px;
   width: 12rem;
 }
