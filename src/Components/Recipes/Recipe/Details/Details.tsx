@@ -10,7 +10,15 @@ export default function Details({
   return (
     <div className="details-element">
       <p>{recipe_description}</p>
-      <p>{recipe_ingredients}</p>
+
+      <p>
+        {recipe_ingredients.map((ingredient, index) => (
+          <span key={index}>
+            <span>{ingredient}</span>
+            {index < recipe_ingredients.length - 1 && <span> • </span>}
+          </span>
+        ))}
+      </p>
     </div>
   );
 }

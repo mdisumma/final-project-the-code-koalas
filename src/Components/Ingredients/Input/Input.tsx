@@ -117,7 +117,7 @@ export default function IngredientsInput({ userInput, setUserInput, recipeOutput
       try {
         const prompt =
           `Generate FIVE recipes based on the provided ingredients with the following details:
-1. Recipe name (recipe_name), a brief description (recipe_description), difficulty level (recipe_difficulty), total time to prepare (recipe_time), and required equipment (recipe_equipment).
+1. Recipe name (recipe_name), a brief description (recipe_description), difficulty level (recipe_difficulty), total time to prepare (recipe_time) in minutes just as a number (max 60 minutes), and required equipment (recipe_equipment).
 2. A list of the provided ingredients used in each recipe.
 3. Detailed preparation steps, each including a step number (step_number) and clear instruction (instruction).
 
@@ -132,7 +132,7 @@ Constraints:
       "recipe_name": "Example Recipe Name",
       "recipe_description": "A brief description of the recipe.",
       "recipe_difficulty": "Easy/Medium/Hard",
-      "recipe_time": "Total preparation time.",
+      "recipe_time": "20",
       "recipe_equipment": "Required kitchen equipment."
     },
     "ingredients": [

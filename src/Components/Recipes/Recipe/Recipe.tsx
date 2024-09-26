@@ -6,6 +6,7 @@ import Details from "./Details/Details";
 interface RecipeDetails {
   recipe_name: string;
   recipe_description: string;
+  recipe_time: string;
 }
 
 interface Step {
@@ -26,7 +27,7 @@ interface recipeProps {
 export default function Recipe({ selectedRecipe }: recipeProps) {
   return (
     <div className="recipie-element">
-      <h1>{selectedRecipe.recipe_details.recipe_name}</h1>
+      <h1>{selectedRecipe.recipe_details.recipe_name} • ⏲ {selectedRecipe.recipe_details.recipe_time}m</h1>
       <Details
         recipe_description={selectedRecipe.recipe_details.recipe_description}
         recipe_ingredients={selectedRecipe.ingredients}
