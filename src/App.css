@@ -47,6 +47,10 @@ body {
 }
 
 /* input element */
+.input-form {
+  padding: 0 1rem;
+}
+
 .input-form * {
   box-sizing: border-box;
   font-family: "Rubik", sans-serif;
