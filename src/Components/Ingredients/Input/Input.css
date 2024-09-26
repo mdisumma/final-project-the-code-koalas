@@ -30,13 +30,14 @@
 
 .ingredientsList-container {
   margin: 1rem 0;
-  height: 42rem;
-  overflow: auto;
-  -ms-overflow-style: none;
-  -webkit-overflow-scrolling: touch;
+  margin: 1rem 0;
+  height: calc(100vh - 50rem);
   scrollbar-width: none;
-  overflow: -moz-scrollbars-none;
   -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: none;
+  overflow: auto;
 }
 
 .ingredient-text {

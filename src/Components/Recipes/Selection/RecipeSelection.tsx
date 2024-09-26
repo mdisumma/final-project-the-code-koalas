@@ -6,6 +6,7 @@ interface RecipeDetails {
   recipe_name: string;
   recipe_description: string;
   recipe_time: string;
+  recipe_difficulty: string;
 }
 
 interface Recipe {
@@ -27,6 +28,7 @@ export default function RecipeSelection({ recipe, currentScreen, setCurrentScree
       recipe_name: '',
       recipe_description: '',
       recipe_time: '',
+      recipe_difficulty: ''
     },
     ingredients: [],
     steps: [],
