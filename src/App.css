@@ -247,4 +247,20 @@ body {
   display: flex;
   align-items: center;
   gap: .2rem;
+  margin: auto;
+  padding: 0;
+}
+
+@keyframes sway {
+  0% {
+    transform: translateX(0px);
+  }
+
+  50% {
+    transform: translateX(15px);
+  }
+
+  100% {
+    transform: translateX(0px);
+  }
 }

@@ -6,6 +6,7 @@ import IngredientsInput from "./Components/Ingredients/Input/Input";
 import RecipeSelection from "./Components/Recipes/Selection/RecipeSelection";
 import ActionButton from "./Components/ActionButton/ActionButton";
 import Footer from "./Components/Footer/Footer";
+import Leaf from "./Components/Leaf/leaf";
 // const [response, setResponse] = useState(""); // State for chat response
 
 export default function App() {
@@ -33,6 +34,7 @@ export default function App() {
 
       <main className="main-container">
         <Koala koalaText={koalaText} />
+        <Leaf />
         {currentScreen === 0 ? (
           <IngredientsInput
             userInput={userInput}
