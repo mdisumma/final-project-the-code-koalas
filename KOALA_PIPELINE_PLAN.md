@@ -98,7 +98,8 @@ Make flowchart
   - Commit to main 🐨
   - Test its working!
     - Make changes on feature branch 🐨
-    - Commit 🍸
+    - Commit 🐨
+    - Push to feature branch 
     - Create pull request🍸
     - Merge PR🍸
     - Should echo leo quote🍸
