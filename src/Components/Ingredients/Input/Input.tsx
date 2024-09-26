@@ -1,6 +1,8 @@
 import { ChangeEvent, FormEvent, useState, useEffect } from "react";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import ActionButton from "../../ActionButton/ActionButton";
+import './Input.css';
+
 
 const api_key = import.meta.env.VITE_PUBLIC_GOOGLE_API_KEY;
 
@@ -199,9 +201,9 @@ Remember to format the response as an array of objects.`;
         </form>
         <div>
           {ingredients.map((ingredient, index) => (
-            <div key={index}>
+            <div key={index} className="ingredients-white-box">
               <span>{ingredient}</span>
-              <span onClick={() => removeIngredient(ingredient)}>❌</span>
+              <span onClick={() => removeIngredient(ingredient)} className="remove-ingredient-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"></svg></span>
             </div>
           ))}
         </div>

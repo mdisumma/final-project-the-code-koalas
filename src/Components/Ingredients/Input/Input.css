@@ -1,0 +1,15 @@
+.ingredients-white-box {
+    background-color: white;
+    align-items: center;
+    border-radius: 0.8rem;
+    padding: 1rem;
+    max-width: 32rem;
+    margin: 1rem;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.remove-ingredient-button {
+    color: var(--red);
+}
