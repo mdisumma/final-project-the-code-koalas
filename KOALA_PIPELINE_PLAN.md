@@ -1,21 +1,21 @@
 # Devops plan
 
 Research steps needed
-
-Docker dev
-Docker prod
-Husky
-Precommit hooks
-Gthub actions
+    Husky
+    Precommit hooks
+    Docker dev
+    Docker prod
+    Gthub actions
+    Testing
 
 Make flowchart
 
 ## Pre-commit hook:
 
-- Navigate to `\<repo name>\.git\hooks`
-- Remove `.sample` from pre-commit file `pre-commit.sample` 
-- Or create pre-commit file `pre-commit` 
-- Add the following script:
+- Navigate to `\<repo name>\.git\hooks` 🐨
+- Remove `.sample` from pre-commit file `pre-commit.sample` 🐨
+- Or create pre-commit file `pre-commit` 🐨
+- Add the following script: 🐨
 
 `
     #!/bin/bash
@@ -27,37 +27,43 @@ Make flowchart
     fi
 `
 
-- Save the file
-- Close the file in editor
-- Make it executable via terminal (bash) `chmod +x pre-commit`
-- Test a commit
+- Save the file 🐨
+- Close the file in editor 🐨
+- Make it executable via terminal (bash) `chmod +x pre-commit` 🐨
+- Test
+    - Push changes to this branch 🐨
+    - Merge to main 🐨
+    - Test a commit 🐨
 
 
+# Husky
 
+` git commit --no-verify -m "<>" `
 
-# Last weeks plan
+## Husky and linting 🐨
 
-## Step 1
+- install Husky `npm install --save-dev husky` 🐨
+- `npx husky init` makes a script and updates script in package.json to create a pre-commit hook 🐨
+- work out how to run linting `npm run lint` 🐨
+- add `npm run lint` to husky hook file 🐨
+- try commit 🐨
+- Change the code to give you a warning/error 
+- Use git log to see if the commit completed or was stopped
+- make the linter more strict, change the npm script for linting so even warnings are not allowed
 
-- work out how to run linting `npm run lint` 🍸
-- install Husky `npm install --save-dev husky` 🍸
-- `npx husky init` makes a script and updates script in package.json to create a pre-commit hook 🍸
-- try commit and make husky lit check🍸
-- Change the code to give you a warning/error 🍸
-- Use git log to see if the commit completed or was stopped🍸
-- make the linter more strict, change the npm script for linting so even warnings are not allowednp🍸
+## prettier 🐨
 
-## Step 2
+- Install prettier as a dev dependency🐨
+    `npx prettier --write` 
+- Create an npm script to run prettier 🐨
+    `"prettier": "npx prettier --write"`
+- Test that it works 🐨
+    `npm run prettier`
+- Test you can make it angry 
+- Add to husky pre-commit hook 🐨
+- test again 🐨
 
-- Install prettier as a dev dependency🍸
-- `npx prettier --write 'app/'` 🍸
-- Create an npm script to run prettier 🍸
-- Test that it works 🍸
-- Test you can make it angry 🍸
-- Add to husky pre-commit hook 🍸
-- test again 🍸
-
-## Step 3
+## jest
 
 - Create a component for the h2's that takes a title prop 🍸
   - Create a components folder 🍸
@@ -86,10 +92,9 @@ Make flowchart
 ### Steps
 
 - Create a Github action
-
-  - Create .github folder with a workflow sub folder 🍸
-  - Create a yaml file (.yml) for a simple action 🍸
-  - Write simple github action to echo a Leo quote on pr merge into the main branch 🍸
+  - Create .github folder with a workflows sub folder 🐨
+  - Create a yaml file (.yml) for a simple action 🐨
+  - Write simple github action to echo something on pr merge into the main branch 🐨
   - Commit to main 🍸
   - Test its working!
     - Create feature branch 🍸
