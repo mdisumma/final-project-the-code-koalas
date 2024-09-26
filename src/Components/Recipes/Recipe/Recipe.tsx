@@ -1,3 +1,4 @@
+import { useState, useRef } from "react";
 import "./Recipe.css";
 
 import Steps from "./Steps/Steps";
@@ -25,6 +26,15 @@ interface recipeProps {
 }
 
 export default function Recipe({ selectedRecipe }: recipeProps) {
+  const [activeIndex, setActiveIndex] = useState(0);
+  const selectedRecipeLength = selectedRecipe.steps.length;
+  const stepRefs = selectedRecipe.steps.map(() => useRef<HTMLDivElement>(null));
+
+  const handleCarouselItemClick = (index: number) => {
+    setActiveIndex(index);
+    stepRefs[index].current?.scrollIntoView({ behavior: 'smooth' });
+    console.log('recipe length: ' + selectedRecipeLength)
+  };
   return (
     <>
       <div className="recipie-element">
@@ -33,16 +43,22 @@ export default function Recipe({ selectedRecipe }: recipeProps) {
           recipe_description={selectedRecipe.recipe_details.recipe_description}
           recipe_ingredients={selectedRecipe.ingredients}
         />
-        <Steps recipe_steps={selectedRecipe.steps} />
+        <Steps recipe_steps={selectedRecipe.steps} activeIndex={activeIndex} setActiveIndex={setActiveIndex} stepRefs={stepRefs} />
       </div>
       <div className="step-carousel">
-        <span className="step-carousel-arrowL">⬅️</span>
+        <span className="step-carousel-arrowL"
+          onClick={() => handleCarouselItemClick(activeIndex - 1)}>⬅️</span>
         <span className="step-carousel-container">
           {selectedRecipe.steps.map((_, index: number) => (
-            <span className="step-carousel-item" key={index}></span>
+            <span
+              className="step-carousel-item"
+              key={index}
+              onClick={() => handleCarouselItemClick(index)}
+            ></span>
           ))}
         </span>
-        <span className="step-carousel-arrowR">➡️</span>
+        <span className="step-carousel-arrowR"
+          onClick={() => handleCarouselItemClick(activeIndex + 1)}>➡️</span>
       </div>
     </>
   );
