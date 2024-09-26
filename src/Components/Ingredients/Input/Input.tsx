@@ -205,7 +205,7 @@ Remember to format the response as an array of objects.`;
             value={userInput}
             name="query"
             onChange={handleChange}
-            placeholder="What ingredients are in your fridge"
+            placeholder="Leaves, peanuts, kangaroo meat..."
             className="user-input"
           />
           <button className="input-button" type="submit">

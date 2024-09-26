@@ -38,7 +38,7 @@ export default function Recipe({ selectedRecipe }: recipeProps) {
       <div className="step-carousel">
         <span className="step-carousel-arrowL">⬅️</span>
         <span className="step-carousel-container">
-          {selectedRecipe.steps.map((step: Step, index: number) => (
+          {selectedRecipe.steps.map((_, index: number) => (
             <span className="step-carousel-item" key={index}></span>
           ))}
         </span>
