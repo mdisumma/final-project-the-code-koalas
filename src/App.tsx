@@ -12,7 +12,7 @@ export default function App() {
   const [userInput, setUserInput] = useState("");
   const [recipeOutput, setRecipeOutput] = useState([]);
   const [currentScreen, setCurrentScreen] = useState(0);
-  const [koalaText, setKoalaText] = useState("");
+  const [koalaText, setKoalaText] = useState(`I'm here to help!`);
 
   function handleClick(i: number) {
     console.log("Button clicked, screen:", i);
