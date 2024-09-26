@@ -36,20 +36,22 @@ Make flowchart
     - Test a commit 🐨
 
 
-# Last weeks plan
+# Husky
 
-## Step 1
+` git commit --no-verify -m "<>" `
 
-- work out how to run linting `npm run lint` 🐨
+## Husky and linting 🐨
+
 - install Husky `npm install --save-dev husky` 🐨
 - `npx husky init` makes a script and updates script in package.json to create a pre-commit hook 🐨
+- work out how to run linting `npm run lint` 🐨
 - add `npm run lint` to husky hook file 🐨
 - try commit 🐨
 - Change the code to give you a warning/error 
 - Use git log to see if the commit completed or was stopped
 - make the linter more strict, change the npm script for linting so even warnings are not allowed
 
-## Step 2
+## prettier 🐨
 
 - Install prettier as a dev dependency🐨
     `npx prettier --write` 
@@ -59,9 +61,9 @@ Make flowchart
     `npm run prettier`
 - Test you can make it angry 
 - Add to husky pre-commit hook 🐨
-- test again 
+- test again 🐨
 
-## Step 3
+## jest
 
 - Create a component for the h2's that takes a title prop 🍸
   - Create a components folder 🍸
@@ -90,10 +92,9 @@ Make flowchart
 ### Steps
 
 - Create a Github action
-
-  - Create .github folder with a workflow sub folder 🍸
-  - Create a yaml file (.yml) for a simple action 🍸
-  - Write simple github action to echo a Leo quote on pr merge into the main branch 🍸
+  - Create .github folder with a workflows sub folder 🐨
+  - Create a yaml file (.yml) for a simple action 🐨
+  - Write simple github action to echo something on pr merge into the main branch 🐨
   - Commit to main 🍸
   - Test its working!
     - Create feature branch 🍸
