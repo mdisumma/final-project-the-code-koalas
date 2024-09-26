@@ -93,7 +93,8 @@ export default function IngredientsInput({
           if (responseJson.pass === true) {
             const correctedIngredients = responseJson.output;
             const newIngredients = [...ingredients, ...correctedIngredients];
-            setIngredients(newIngredients);
+            const sortedIngredients = newIngredients.sort()
+            setIngredients(sortedIngredients);
             localStorage.setItem("ingredients", JSON.stringify(newIngredients));
             console.log("Ingredients: " + newIngredients);
           } else {
@@ -204,7 +205,7 @@ Remember to format the response as an array of objects.`;
             value={userInput}
             name="query"
             onChange={handleChange}
-            placeholder="What ingredients are in your fridge"
+            placeholder="Leaves, peanuts, kangaroo meat..."
             className="user-input"
           />
           <button className="input-button" type="submit">

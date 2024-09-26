@@ -41,17 +41,17 @@ export default function App() {
             />
           </div>
         ) : (
-          <div>
+          <div className="recipe-container">
             <RecipeSelection
               currentScreen={currentScreen}
               setCurrentScreen={setCurrentScreen}
               recipe={recipeOutput}
             />
             {(currentScreen === 1) && (
-            <ActionButton text="Return to fridge" onClick={() => handleClick(0)} disabled={false} />
+              <ActionButton text="Return to fridge" onClick={() => handleClick(0)} disabled={false} />
             )}
             {(currentScreen === 2) && (
-            <ActionButton text="Return to recipe list" onClick={() => handleClick(1)} disabled={false} />
+              <ActionButton text="Return to recipe list" onClick={() => handleClick(1)} disabled={false} />
             )}
           </div>
         )}
