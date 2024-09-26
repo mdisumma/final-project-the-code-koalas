@@ -13,7 +13,7 @@
 .ingredients-container {
   margin: 1rem 0;
   height: 30rem;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .ingredient-text {
