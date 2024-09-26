@@ -87,6 +87,7 @@ body {
   width: 30rem;
   border-radius: 0.8rem;
   background-color: var(--white);
+  min-height: 3rem;
 }
 
 .listItem h2 {
@@ -94,6 +95,7 @@ body {
   padding-left: 1rem;
   font-weight: 400;
   font-size: 1.2rem;
+  padding: 1rem;
 }
 
 .listItem span {
@@ -104,6 +106,7 @@ body {
   color: var(--white);
   border-radius: 0 0.8rem 0.8rem 0;
   text-align: center;
+  min-height: 1.7rem;
 }
 
 /* action button */

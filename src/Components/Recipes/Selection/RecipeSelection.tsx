@@ -47,7 +47,13 @@ export default function RecipeSelection({ recipe, currentScreen, setCurrentScree
             </span>
           ))
         ) : (
-          <p>No recipes available</p>
+          <>
+            <span><ListItem recipe_name="" /></span>
+            <span><ListItem recipe_name="" /></span>
+            <span><ListItem recipe_name="" /></span>
+            <span><ListItem recipe_name="" /></span>
+            <span><ListItem recipe_name="" /></span>
+          </>
         )
       ) : (currentScreen === 2 ? (
         <Recipe selectedRecipe={selectedRecipe} />

@@ -8,10 +8,10 @@ export interface ListItemProps {
 export default function ListItem({ recipe_name }: ListItemProps) {
   return (
     <>
-      <span className="listItem">
-        <h2>{recipe_name}</h2>
-        <span>Cook!</span>
-      </span>
+      <div className="listItem">
+        <h2>{recipe_name ? recipe_name : "Searching for recipe"}</h2>
+        {recipe_name ? <span>Cook!</span> : <></>}
+      </div>
     </>
   );
 }
