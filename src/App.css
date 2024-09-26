@@ -148,3 +148,28 @@ body {
     transform: rotate(360deg);
   }
 }
+
+.step-carousel,
+.step-carousel-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: .2rem;
+  align-items: center;
+  justify-content: center;
+  height: 4rem;
+}
+
+.step-carousel-arrowL,
+.step-carousel-arrowR {
+  height: 5rem;
+  font-size: 3rem;
+  line-height: 5rem;
+}
+
+.step-carousel-item {
+  display: flex;
+  height: 1rem;
+  width: 100%;
+  background: magenta;
+}

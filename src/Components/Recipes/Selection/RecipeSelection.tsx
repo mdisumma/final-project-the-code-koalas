@@ -40,26 +40,26 @@ export default function RecipeSelection({ recipe, currentScreen, setCurrentScree
   }
 
   return (
-    <section>
+    <>
       {currentScreen === 1 ? (
         Array.isArray(recipe) && recipe.length > 0 ? (
           recipe.map((recipeItem, index) => (
             <span onClick={() => handleClick(index)} key={index}>
-              <ListItem recipe_name={recipeItem.recipe_details.recipe_name} recipe_time={recipeItem.recipe_details.recipe_time}/>
+              <ListItem recipe_name={recipeItem.recipe_details.recipe_name} recipe_time={recipeItem.recipe_details.recipe_time} />
             </span>
           ))
         ) : (
           <>
-            <span><ListItem recipe_name="" recipe_time=""/></span>
-            <span><ListItem recipe_name="" recipe_time=""/></span>
-            <span><ListItem recipe_name="" recipe_time=""/></span>
-            <span><ListItem recipe_name="" recipe_time=""/></span>
-            <span><ListItem recipe_name="" recipe_time=""/></span>
+            <span><ListItem recipe_name="" recipe_time="" /></span>
+            <span><ListItem recipe_name="" recipe_time="" /></span>
+            <span><ListItem recipe_name="" recipe_time="" /></span>
+            <span><ListItem recipe_name="" recipe_time="" /></span>
+            <span><ListItem recipe_name="" recipe_time="" /></span>
           </>
         )
       ) : (currentScreen === 2 ? (
         <Recipe selectedRecipe={selectedRecipe} />
       ) : "Whoops")}
-    </section>
+    </>
   );
 }

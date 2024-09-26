@@ -26,13 +26,24 @@ interface recipeProps {
 
 export default function Recipe({ selectedRecipe }: recipeProps) {
   return (
-    <div className="recipie-element">
-      <h1>{selectedRecipe.recipe_details.recipe_name} • ⏲ {selectedRecipe.recipe_details.recipe_time}m</h1>
-      <Details
-        recipe_description={selectedRecipe.recipe_details.recipe_description}
-        recipe_ingredients={selectedRecipe.ingredients}
-      />
-      <Steps recipe_steps={selectedRecipe.steps} />
-    </div>
+    <>
+      <div className="recipie-element">
+        <h1>{selectedRecipe.recipe_details.recipe_name} • ⏲ {selectedRecipe.recipe_details.recipe_time}m</h1>
+        <Details
+          recipe_description={selectedRecipe.recipe_details.recipe_description}
+          recipe_ingredients={selectedRecipe.ingredients}
+        />
+        <Steps recipe_steps={selectedRecipe.steps} />
+      </div>
+      <div className="step-carousel">
+        <span className="step-carousel-arrowL">⬅️</span>
+        <span className="step-carousel-container">
+          {selectedRecipe.steps.map((step: Step, index: number) => (
+            <span className="step-carousel-item" key={index}></span>
+          ))}
+        </span>
+        <span className="step-carousel-arrowR">➡️</span>
+      </div>
+    </>
   );
 }

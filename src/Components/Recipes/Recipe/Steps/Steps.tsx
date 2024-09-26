@@ -9,8 +9,6 @@ interface StepsProps {
 
 export default function Steps(recipe: StepsProps) {
   return (
-    // <div className="steps-element">
-    //  <h1 className="recipie-steps-title">Steps</h1>
     <div className="recipie-steps-container">
       {recipe.recipe_steps.map((step: Step, index: number) => (
         <div className="recipie-step" key={index}>
@@ -19,6 +17,5 @@ export default function Steps(recipe: StepsProps) {
         </div>
       ))}
     </div>
-    // </div>
   );
 }
