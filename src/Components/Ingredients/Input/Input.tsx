@@ -93,7 +93,8 @@ export default function IngredientsInput({
           if (responseJson.pass === true) {
             const correctedIngredients = responseJson.output;
             const newIngredients = [...ingredients, ...correctedIngredients];
-            setIngredients(newIngredients);
+            const sortedIngredients = newIngredients.sort()
+            setIngredients(sortedIngredients);
             localStorage.setItem("ingredients", JSON.stringify(newIngredients));
             console.log("Ingredients: " + newIngredients);
           } else {
