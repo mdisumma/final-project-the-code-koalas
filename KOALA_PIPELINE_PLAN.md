@@ -1,21 +1,21 @@
 # Devops plan
 
 Research steps needed
-
-Docker dev
-Docker prod
-Husky
-Precommit hooks
-Gthub actions
+    Husky
+    Precommit hooks
+    Docker dev
+    Docker prod
+    Gthub actions
+    Testing
 
 Make flowchart
 
 ## Pre-commit hook:
 
-- Navigate to `\<repo name>\.git\hooks`
-- Remove `.sample` from pre-commit file `pre-commit.sample` 
-- Or create pre-commit file `pre-commit` 
-- Add the following script:
+- Navigate to `\<repo name>\.git\hooks` 🐨
+- Remove `.sample` from pre-commit file `pre-commit.sample` 🐨
+- Or create pre-commit file `pre-commit` 🐨
+- Add the following script: 🐨
 
 `
     #!/bin/bash
@@ -27,35 +27,39 @@ Make flowchart
     fi
 `
 
-- Save the file
-- Close the file in editor
-- Make it executable via terminal (bash) `chmod +x pre-commit`
-- Test a commit
-
-
+- Save the file 🐨
+- Close the file in editor 🐨
+- Make it executable via terminal (bash) `chmod +x pre-commit` 🐨
+- Test
+    - Push changes to this branch 🐨
+    - Merge to main 🐨
+    - Test a commit 🐨
 
 
 # Last weeks plan
 
 ## Step 1
 
-- work out how to run linting `npm run lint` 🍸
-- install Husky `npm install --save-dev husky` 🍸
-- `npx husky init` makes a script and updates script in package.json to create a pre-commit hook 🍸
-- try commit and make husky lit check🍸
-- Change the code to give you a warning/error 🍸
-- Use git log to see if the commit completed or was stopped🍸
-- make the linter more strict, change the npm script for linting so even warnings are not allowednp🍸
+- work out how to run linting `npm run lint` 🐨
+- install Husky `npm install --save-dev husky` 🐨
+- `npx husky init` makes a script and updates script in package.json to create a pre-commit hook 🐨
+- add `npm run lint` to husky hook file 🐨
+- try commit 🐨
+- Change the code to give you a warning/error 
+- Use git log to see if the commit completed or was stopped
+- make the linter more strict, change the npm script for linting so even warnings are not allowed
 
 ## Step 2
 
-- Install prettier as a dev dependency🍸
-- `npx prettier --write 'app/'` 🍸
-- Create an npm script to run prettier 🍸
-- Test that it works 🍸
-- Test you can make it angry 🍸
-- Add to husky pre-commit hook 🍸
-- test again 🍸
+- Install prettier as a dev dependency🐨
+    `npx prettier --write` 
+- Create an npm script to run prettier 🐨
+    `"prettier": "npx prettier --write"`
+- Test that it works 🐨
+    `npm run prettier`
+- Test you can make it angry 
+- Add to husky pre-commit hook 🐨
+- test again 
 
 ## Step 3
 
