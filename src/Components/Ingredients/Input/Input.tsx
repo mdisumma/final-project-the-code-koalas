@@ -212,7 +212,7 @@ Remember to format the response as an array of objects.`;
             Add
           </button>
         </form>
-        <div>
+        <div className="ingredients-container">
           {ingredients.map((ingredient, index) => (
             <div key={index} className="ingredients-white-box">
               <span className="ingredient-text">{ingredient}</span>
