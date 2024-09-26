@@ -5,6 +5,7 @@ import Recipe from "../Recipe/Recipe";
 interface RecipeDetails {
   recipe_name: string;
   recipe_description: string;
+  recipe_time: string;
 }
 
 interface Recipe {
@@ -24,6 +25,7 @@ export default function RecipeSelection({ recipe, currentScreen, setCurrentScree
     recipe_details: {
       recipe_name: '',
       recipe_description: '',
+      recipe_time: '',
     },
     ingredients: [],
     steps: [],
@@ -43,16 +45,16 @@ export default function RecipeSelection({ recipe, currentScreen, setCurrentScree
         Array.isArray(recipe) && recipe.length > 0 ? (
           recipe.map((recipeItem, index) => (
             <span onClick={() => handleClick(index)} key={index}>
-              <ListItem recipe_name={recipeItem.recipe_details.recipe_name} />
+              <ListItem recipe_name={recipeItem.recipe_details.recipe_name} recipe_time={recipeItem.recipe_details.recipe_time}/>
             </span>
           ))
         ) : (
           <>
-            <span><ListItem recipe_name="" /></span>
-            <span><ListItem recipe_name="" /></span>
-            <span><ListItem recipe_name="" /></span>
-            <span><ListItem recipe_name="" /></span>
-            <span><ListItem recipe_name="" /></span>
+            <span><ListItem recipe_name="" recipe_time=""/></span>
+            <span><ListItem recipe_name="" recipe_time=""/></span>
+            <span><ListItem recipe_name="" recipe_time=""/></span>
+            <span><ListItem recipe_name="" recipe_time=""/></span>
+            <span><ListItem recipe_name="" recipe_time=""/></span>
           </>
         )
       ) : (currentScreen === 2 ? (
