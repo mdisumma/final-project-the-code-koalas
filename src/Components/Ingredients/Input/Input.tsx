@@ -181,28 +181,32 @@ Remember to format the response as an array of objects.`;
 
   return (
     <>
-      <form className="input-form" onSubmit={handleAddIngredient}>
-        <label className="label-input" htmlFor="query">
-          Ingredients:
-        </label>
-        <input
-          value={userInput}
-          name="query"
-          onChange={handleChange}
-          placeholder="What ingredients are in your fridge"
-          className="user-input"
-        />
-        <button className="input-button" type="submit">
-          Add
-        </button>
-      </form>
-      {ingredients.map((ingredient, index) => (
-        <div key={index}>
-          <span>{ingredient}</span>
-          <span onClick={() => removeIngredient(ingredient)}>❌</span>
+      <div>
+        <form className="input-form" onSubmit={handleAddIngredient}>
+          <label className="label-input" htmlFor="query">
+            Ingredients:
+          </label>
+          <input
+            value={userInput}
+            name="query"
+            onChange={handleChange}
+            placeholder="What ingredients are in your fridge"
+            className="user-input"
+          />
+          <button className="input-button" type="submit">
+            Add
+          </button>
+        </form>
+        <div>
+          {ingredients.map((ingredient, index) => (
+            <div key={index}>
+              <span>{ingredient}</span>
+              <span onClick={() => removeIngredient(ingredient)}>❌</span>
+            </div>
+          ))}
         </div>
-      ))}
-      < ActionButton text={ingredients.length !== 0 ? 'Find me a recipe' : 'Add an ingredient'} onClick={handleSubmit} disabled={ingredients.length === 0 || responseState === 1} />
+        < ActionButton text={ingredients.length !== 0 ? 'Find me a recipe' : 'Add an ingredient'} onClick={handleSubmit} disabled={ingredients.length === 0 || responseState === 1} />
+      </div>
     </>
   );
 }
