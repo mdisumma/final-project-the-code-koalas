@@ -16,6 +16,9 @@ export default function App() {
 
   function handleClick(i: number) {
     console.log("Button clicked, screen:", i);
+    if (currentScreen === 1) {
+      setRecipeOutput([]);
+    }
     setCurrentScreen(i++);
   }
 
@@ -44,7 +47,12 @@ export default function App() {
               setCurrentScreen={setCurrentScreen}
               recipe={recipeOutput}
             />
-            <ActionButton text="Click me" onClick={() => handleClick(1)} disabled={false} />
+            {(currentScreen === 1) && (
+            <ActionButton text="Return to fridge" onClick={() => handleClick(0)} disabled={false} />
+            )}
+            {(currentScreen === 2) && (
+            <ActionButton text="Return to recipe list" onClick={() => handleClick(1)} disabled={false} />
+            )}
           </div>
         )}
 
