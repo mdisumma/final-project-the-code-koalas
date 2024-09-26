@@ -247,7 +247,6 @@ body {
   display: flex;
   align-items: center;
   gap: .2rem;
-  margin: auto;
   padding: 0;
 }
 
