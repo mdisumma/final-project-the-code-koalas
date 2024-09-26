@@ -1,19 +1,25 @@
 .ingredients-white-box {
-    background-color: white;
-    align-items: center;
-    border-radius: 0.8rem;
-    padding: 0.5rem 0.5rem 0.5rem 1rem;
-    max-width: 32rem;
-    margin: 1rem;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
+  background-color: white;
+  align-items: center;
+  border-radius: 0.8rem;
+  padding: 0.5rem 0.5rem 0.5rem 1rem;
+  max-width: 32rem;
+  margin: 1rem;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.ingredients-container {
+  margin: 1rem 0;
+  height: 30rem;
+  overflow: scroll;
 }
 
 .ingredient-text {
-    font-size: 1.4rem;
+  font-size: 1.4rem;
 }
 
 .remove-ingredient-button {
-    color: var(--red);
+  color: var(--red);
 }

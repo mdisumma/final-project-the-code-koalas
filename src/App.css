@@ -46,7 +46,7 @@ body {
   background-color: var(--yellow);
   background-image: url("../public/leaf.svg");
   background-repeat: repeat;
-  background-position: left top;
+  background-position: left bottom;
 }
 
 /* input element */
