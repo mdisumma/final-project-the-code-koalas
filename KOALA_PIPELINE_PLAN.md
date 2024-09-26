@@ -95,10 +95,10 @@ Make flowchart
   - Create .github folder with a workflows sub folder 🐨
   - Create a yaml file (.yml) for a simple action 🐨
   - Write simple github action to echo something on pr merge into the main branch 🐨
-  - Commit to main 🍸
+  - Commit to main 🐨
   - Test its working!
-    - Create feature branch 🍸
-    - make change and commit 🍸
+    - Make changes on feature branch 🐨
+    - Commit 🍸
     - Create pull request🍸
     - Merge PR🍸
     - Should echo leo quote🍸
