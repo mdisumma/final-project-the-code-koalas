@@ -114,8 +114,9 @@ export default function Koala({ koalaText }: any) {
             />
           </svg>
         </div>
-      ) : ``
-      }
+      ) : (
+        ``
+      )}
     </div>
   );
 }
