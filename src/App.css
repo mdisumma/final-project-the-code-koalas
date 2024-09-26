@@ -44,9 +44,16 @@ body {
   justify-content: space-evenly;
   align-items: center;
   background-color: var(--yellow);
+  background-image: url("../public/leaf.svg");
+  background-repeat: repeat;
+  background-position: left top;
 }
 
 /* input element */
+.input-form {
+  padding: 0 1rem;
+}
+
 .input-form * {
   box-sizing: border-box;
   font-family: "Rubik", sans-serif;
