@@ -18,9 +18,10 @@ interface outputProps {
   recipe: Recipe[];
   currentScreen: number;
   setCurrentScreen: (screen: number) => void;
+  setKoalaText: (text: string) => void;
 }
 
-export default function RecipeSelection({ recipe, currentScreen, setCurrentScreen }: outputProps) {
+export default function RecipeSelection({ recipe, currentScreen, setCurrentScreen, setKoalaText }: outputProps) {
   const defaultRecipe: Recipe = {
     recipe_details: {
       recipe_name: '',
@@ -37,6 +38,7 @@ export default function RecipeSelection({ recipe, currentScreen, setCurrentScree
     console.log('Clicked' + index);
     setCurrentScreen((currentScreen === 0 ? 1 : 2));
     setSelectedRecipe(recipe[index]);
+    setKoalaText(`Don't forget the eucalyptus!`);
   }
 
   return (

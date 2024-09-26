@@ -19,6 +19,11 @@ export default function App() {
     if (currentScreen === 1) {
       setRecipeOutput([]);
     }
+    if (i === 0) {  
+      setKoalaText(`I'm here to help!`);
+    } else if (i === 1) {
+      setKoalaText(`Choose a recipe for instructions!`)
+    }
     setCurrentScreen(i++);
   }
 
@@ -46,9 +51,10 @@ export default function App() {
               currentScreen={currentScreen}
               setCurrentScreen={setCurrentScreen}
               recipe={recipeOutput}
+              setKoalaText={setKoalaText}
             />
             {(currentScreen === 1) && (
-              <ActionButton text="Return to fridge" onClick={() => handleClick(0)} disabled={false} />
+              <ActionButton text="Go back to ingredients" onClick={() => handleClick(0)} disabled={false} />
             )}
             {(currentScreen === 2) && (
               <ActionButton text="Return to recipe list" onClick={() => handleClick(1)} disabled={false} />
