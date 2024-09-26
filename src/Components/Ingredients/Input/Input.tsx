@@ -174,13 +174,13 @@ Remember to format the response as an array of objects.`;
         console.log("Waiting for Response..." + responseState);
         console.log("Creating recipe prompt using: " + ingredients);
         const result = await model.generateContent(prompt);
-        const responseText = await result.response.text();
+        const responseText = result.response.text();
         const responseJson = JSON.parse(responseText);
         setRecipeOutput(responseJson);
         setResponseState(0);
         console.log("Response Received." + responseState);
         koala.classList.remove("spin");
-
+        setKoalaText(`Choose a recipe for instructions.`);
         console.log("Recipe JSON:", responseJson);
         console.log("Recipe output updated:", recipeOutput);
       } catch (error) {

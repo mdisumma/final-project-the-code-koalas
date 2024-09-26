@@ -49,7 +49,7 @@ export default function Recipe({ selectedRecipe }: recipeProps) {
       </div>
       <div className="step-carousel">
         <span className="step-carousel-arrowL"
-          onClick={() => handleCarouselItemClick(activeIndex - 1)}>⬅️</span>
+          onClick={activeIndex === 0 ? () => {} : () => handleCarouselItemClick(activeIndex - 1)}>⬅️</span>
         <span className="step-carousel-container">
           {selectedRecipe.steps.map((_, index: number) => (
             <span
@@ -60,7 +60,7 @@ export default function Recipe({ selectedRecipe }: recipeProps) {
           ))}
         </span>
         <span className="step-carousel-arrowR"
-          onClick={() => handleCarouselItemClick(activeIndex + 1)}>➡️</span>
+          onClick={activeIndex === (selectedRecipeLength - 1) ? () => {} : () => handleCarouselItemClick(activeIndex + 1)}>➡️</span>
       </div>
     </>
   );
