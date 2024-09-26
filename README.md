@@ -13,3 +13,19 @@ Sarah the Student: "KoalaKitchen has been a lifesaver! I can now turn my random 
 
 ### FAQs
 Q: How does KoalaKitchen help me if I have limited cooking skills? A: KoalaKitchen simplifies cooking by suggesting recipes that are easy to follow and require basic culinary techniques. You'll be surprised at how quickly you can create tasty meals! Q: Can I use KoalaKitchen if I only have a few ingredients available? A: Absolutely! KoalaKitchen excels at suggesting recipes based on the ingredients you have on hand, helping you make the most out of what's in your fridge. Q: Is KoalaKitchen suitable for busy individuals with limited time for meal preparation? A: Yes, KoalaKitchen specializes in quick and convenient recipes that fit into your busy schedule. Whether you have 15 minutes or an hour, KoalaKitchen has a recipe for you.
+
+## Final Product
+Check out our application [here](https://thecodekoalas.netlify.app/)
+
+## Other Info
+Feel free to fork this repository and make it your own.
+
+To get started you will need to follow these steps:
+
+1. Fork the repo to your GitHub profile
+2. Clone it down to your local machine
+3. Create a .env file and add the following:
+    - VITE_PUBLIC_GOOGLE_API_KEY="*Your_API_Key*"
+    - Get an API key from [Google Gemini](https://ai.google.dev/gemini-api/docs/api-key)
+4. Run ```npm install```
+5. You're good to go! Run the command ```npm run dev``` to see changes as you make them.
