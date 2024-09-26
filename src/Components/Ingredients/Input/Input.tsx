@@ -1,8 +1,8 @@
 import { ChangeEvent, FormEvent, useState, useEffect } from "react";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import ActionButton from "../../ActionButton/ActionButton";
-import './Input.css';
-
+import { IoIosCloseCircleOutline } from "react-icons/io";
+import "./Input.css";
 
 const api_key = import.meta.env.VITE_PUBLIC_GOOGLE_API_KEY;
 
@@ -25,10 +25,18 @@ interface inputProps {
   setKoalaText: any;
 }
 
-export default function IngredientsInput({ userInput, setUserInput, recipeOutput, setRecipeOutput, currentScreen, setCurrentScreen, setKoalaText }: inputProps) {
+export default function IngredientsInput({
+  userInput,
+  setUserInput,
+  recipeOutput,
+  setRecipeOutput,
+  currentScreen,
+  setCurrentScreen,
+  setKoalaText,
+}: inputProps) {
   const [ingredients, setIngredients] = useState<string[]>([]);
   const [responseState, setResponseState] = useState(0);
-  const koala: any = document.getElementById('koala');
+  const koala: any = document.getElementById("koala");
 
   useEffect(() => {
     const storedIngredients = localStorage.getItem("ingredients");
@@ -38,7 +46,7 @@ export default function IngredientsInput({ userInput, setUserInput, recipeOutput
   }, []);
 
   function updateIngredients(i: string) {
-    if (i !== '') {
+    if (i !== "") {
       (async () => {
         const prompt = `
         You will be given a userInput value, to be compiled into an array of recipe ingredients. Respond with a JSON Object in the following pattern:
@@ -49,7 +57,9 @@ export default function IngredientsInput({ userInput, setUserInput, recipeOutput
         }
         
 
-        If any ingredient in userInput matches an item from the array (${ingredients.join(', ')}), exclude it from the output. If all ingredients are duplicates, return a failure response.
+        If any ingredient in userInput matches an item from the array (${ingredients.join(
+          ", "
+        )}), exclude it from the output. If all ingredients are duplicates, return a failure response.
 
         For valid ingredients in the userInput:
 
@@ -72,26 +82,26 @@ export default function IngredientsInput({ userInput, setUserInput, recipeOutput
         This is the userInput value: ${i}.
         `;
         try {
-          setResponseState(1)
-          console.log('Waiting for Response...' + responseState)
+          setResponseState(1);
+          console.log("Waiting for Response..." + responseState);
           const result = await model.generateContent(prompt);
           const responseText = await result.response.text();
           const responseJson = JSON.parse(responseText);
           setResponseState(0);
-          console.log('Response Received.' + responseState);
+          console.log("Response Received." + responseState);
 
           if (responseJson.pass === true) {
             const correctedIngredients = responseJson.output;
             const newIngredients = [...ingredients, ...correctedIngredients];
             setIngredients(newIngredients);
             localStorage.setItem("ingredients", JSON.stringify(newIngredients));
-            console.log('Ingredients: ' + newIngredients);
+            console.log("Ingredients: " + newIngredients);
           } else {
-            console.log('Invalid ingredient: ' + responseJson.response);
+            console.log("Invalid ingredient: " + responseJson.response);
           }
           console.log("Recipe JSON:", responseJson);
           // console.log("Koala Says:", koalaText);
-          setKoalaText(responseJson.response)
+          setKoalaText(responseJson.response);
         } catch (error) {
           console.error("Error generating content:", error);
         }
@@ -100,10 +110,12 @@ export default function IngredientsInput({ userInput, setUserInput, recipeOutput
   }
 
   function removeIngredient(value: string) {
-    const newIngredients = ingredients.filter(ingredient => ingredient !== value);
+    const newIngredients = ingredients.filter(
+      (ingredient) => ingredient !== value
+    );
     setIngredients(newIngredients);
     localStorage.setItem("ingredients", JSON.stringify(newIngredients));
-    console.log('Ingredients: ' + newIngredients);
+    console.log("Ingredients: " + newIngredients);
   }
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
@@ -111,14 +123,13 @@ export default function IngredientsInput({ userInput, setUserInput, recipeOutput
   }
 
   async function handleSubmit() {
-    koala.classList.add('spin');
+    koala.classList.add("spin");
     setCurrentScreen(1);
-    setKoalaText(`Discovering new recipes...`)
-    console.log('Current screen: ' + currentScreen);
+    setKoalaText(`Discovering new recipes...`);
+    console.log("Current screen: " + currentScreen);
     if (responseState === 0) {
       try {
-        const prompt =
-          `Generate FIVE recipes based on the provided ingredients with the following details:
+        const prompt = `Generate FIVE recipes based on the provided ingredients with the following details:
 1. Recipe name (recipe_name), a brief description (recipe_description), difficulty level (recipe_difficulty), total time to prepare (recipe_time), and required equipment (recipe_equipment).
 2. A list of the provided ingredients used in each recipe.
 3. Detailed preparation steps, each including a step number (step_number) and clear instruction (instruction).
@@ -158,15 +169,15 @@ Please use the following ingredients: ${ingredients}.
 Remember to format the response as an array of objects.`;
 
         setResponseState(1);
-        console.log('Waiting for Response...' + responseState);
-        console.log('Creating recipe prompt using: ' + ingredients);
+        console.log("Waiting for Response..." + responseState);
+        console.log("Creating recipe prompt using: " + ingredients);
         const result = await model.generateContent(prompt);
         const responseText = await result.response.text();
         const responseJson = JSON.parse(responseText);
         setRecipeOutput(responseJson);
         setResponseState(0);
-        console.log('Response Received.' + responseState);
-        koala.classList.remove('spin');
+        console.log("Response Received." + responseState);
+        koala.classList.remove("spin");
 
         console.log("Recipe JSON:", responseJson);
         console.log("Recipe output updated:", recipeOutput);
@@ -178,7 +189,7 @@ Remember to format the response as an array of objects.`;
   function handleAddIngredient(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     updateIngredients(userInput);
-    setUserInput('');
+    setUserInput("");
   }
 
   return (
@@ -203,11 +214,22 @@ Remember to format the response as an array of objects.`;
           {ingredients.map((ingredient, index) => (
             <div key={index} className="ingredients-white-box">
               <span>{ingredient}</span>
-              <span onClick={() => removeIngredient(ingredient)} className="remove-ingredient-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"></svg></span>
+              <span
+                onClick={() => removeIngredient(ingredient)}
+                className="remove-ingredient-button"
+              >
+                <IoIosCloseCircleOutline fontSize="2rem" />
+              </span>
             </div>
           ))}
         </div>
-        < ActionButton text={ingredients.length !== 0 ? 'Find me a recipe' : 'Add an ingredient'} onClick={handleSubmit} disabled={ingredients.length === 0 || responseState === 1} />
+        <ActionButton
+          text={
+            ingredients.length !== 0 ? "Find me a recipe" : "Add an ingredient"
+          }
+          onClick={handleSubmit}
+          disabled={ingredients.length === 0 || responseState === 1}
+        />
       </div>
     </>
   );
