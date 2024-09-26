@@ -196,35 +196,37 @@ Remember to format the response as an array of objects.`;
 
   return (
     <>
-      <div>
-        <form className="input-form" onSubmit={handleAddIngredient}>
-          <label className="label-input" htmlFor="query">
-            Ingredients:
-          </label>
-          <input
-            value={userInput}
-            name="query"
-            onChange={handleChange}
-            placeholder="Leaves, peanuts, kangaroo meat..."
-            className="user-input"
-          />
-          <button className="input-button" type="submit">
-            Add
-          </button>
-        </form>
-        <div className="ingredients-container">
-          {ingredients.map((ingredient, index) => (
-            <div key={index} className="ingredients-white-box">
-              <span className="ingredient-text">{ingredient}</span>
-              <span
-                onClick={() => removeIngredient(ingredient)}
-                className="remove-ingredient-button"
-              >
-                <IoIosCloseCircleOutline fontSize="3rem" />
-              </span>
-            </div>
-          ))}
-        </div>
+      <div className="ingredients-wrapper">
+        <section className="ingredients-container">
+          <form className="input-form" onSubmit={handleAddIngredient}>
+            <label className="label-input" htmlFor="query">
+              Ingredients:
+            </label>
+            <input
+              value={userInput}
+              name="query"
+              onChange={handleChange}
+              placeholder="Leaves, peanuts, kangaroo meat..."
+              className="user-input"
+            />
+            <button className="input-button" type="submit">
+              Add
+            </button>
+          </form>
+          <div className="ingredientsList-container">
+            {ingredients.map((ingredient, index) => (
+              <div key={index} className="ingredients-white-box">
+                <span className="ingredient-text">{ingredient}</span>
+                <span
+                  onClick={() => removeIngredient(ingredient)}
+                  className="remove-ingredient-button"
+                >
+                  <IoIosCloseCircleOutline fontSize="3rem" />
+                </span>
+              </div>
+            ))}
+          </div>
+        </section>
         <ActionButton
           text={
             ingredients.length !== 0 ? "Find me a recipe" : "Add an ingredient"

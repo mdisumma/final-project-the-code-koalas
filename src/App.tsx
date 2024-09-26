@@ -29,31 +29,31 @@ export default function App() {
       <main className="main-container">
         <Koala koalaText={koalaText} />
         {currentScreen === 0 ? (
-          <div>
-            <IngredientsInput
-              userInput={userInput}
-              setUserInput={setUserInput}
-              recipeOutput={recipeOutput}
-              setRecipeOutput={setRecipeOutput}
-              currentScreen={currentScreen}
-              setCurrentScreen={setCurrentScreen}
-              setKoalaText={setKoalaText}
-            />
-          </div>
+          <IngredientsInput
+            userInput={userInput}
+            setUserInput={setUserInput}
+            recipeOutput={recipeOutput}
+            setRecipeOutput={setRecipeOutput}
+            currentScreen={currentScreen}
+            setCurrentScreen={setCurrentScreen}
+            setKoalaText={setKoalaText}
+          />
         ) : (
-          <div className="recipe-container">
-            <RecipeSelection
-              currentScreen={currentScreen}
-              setCurrentScreen={setCurrentScreen}
-              recipe={recipeOutput}
-            />
+          <section className="recipe-wrapper">
+            <div className="recipe-container">
+              <RecipeSelection
+                currentScreen={currentScreen}
+                setCurrentScreen={setCurrentScreen}
+                recipe={recipeOutput}
+              />
+            </div>
             {(currentScreen === 1) && (
               <ActionButton text="Return to fridge" onClick={() => handleClick(0)} disabled={false} />
             )}
             {(currentScreen === 2) && (
               <ActionButton text="Return to recipe list" onClick={() => handleClick(1)} disabled={false} />
             )}
-          </div>
+          </section>
         )}
 
       </main>

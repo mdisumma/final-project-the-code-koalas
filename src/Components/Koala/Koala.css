@@ -52,6 +52,7 @@
   padding: 1rem;
   border-radius: 0.8rem;
   animation: scale 1s;
+  max-width: 30rem;
 }
 
 #left-hear {

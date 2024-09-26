@@ -38,11 +38,13 @@ export default function Recipe({ selectedRecipe }: recipeProps) {
   return (
     <>
       <div className="recipie-element">
-        <h1>{selectedRecipe.recipe_details.recipe_name} • ⏲ {selectedRecipe.recipe_details.recipe_time}m</h1>
-        <Details
-          recipe_description={selectedRecipe.recipe_details.recipe_description}
-          recipe_ingredients={selectedRecipe.ingredients}
-        />
+        <span className="recipe-info">
+          <h1>{selectedRecipe.recipe_details.recipe_name} • ⏲ {selectedRecipe.recipe_details.recipe_time}m</h1>
+          <Details
+            recipe_description={selectedRecipe.recipe_details.recipe_description}
+            recipe_ingredients={selectedRecipe.ingredients}
+          />
+        </span>
         <Steps recipe_steps={selectedRecipe.steps} activeIndex={activeIndex} setActiveIndex={setActiveIndex} stepRefs={stepRefs} />
       </div>
       <div className="step-carousel">
@@ -51,7 +53,7 @@ export default function Recipe({ selectedRecipe }: recipeProps) {
         <span className="step-carousel-container">
           {selectedRecipe.steps.map((_, index: number) => (
             <span
-              className="step-carousel-item"
+              className={`step-carousel-item ${index === activeIndex ? 'active' : ''}`}
               key={index}
               onClick={() => handleCarouselItemClick(index)}
             ></span>

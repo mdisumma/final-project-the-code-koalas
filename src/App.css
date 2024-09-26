@@ -38,13 +38,14 @@ body {
 
 /* main container */
 .main-container {
-  min-height: calc(100vh - 14rem);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+  height: calc(100vh - 24rem);
+  display: grid;
+  padding: 5rem 0;
+  grid-template-rows: 13rem 1fr;
+  justify-content: center;
   align-items: center;
   background-color: var(--yellow);
-  background-image: url("../public/leaf.svg");
+  background-image: url(/leaf.svg);
   background-repeat: repeat;
   background-position: left bottom;
 }
@@ -88,13 +89,13 @@ body {
 /* listItem */
 .listItem {
   margin: 1rem;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 5rem;
   justify-content: space-between;
   align-items: center;
   width: 30rem;
   border-radius: 0.8rem;
   background-color: var(--white);
-  min-height: 5rem;
 }
 
 .listItem h2 {
@@ -106,7 +107,7 @@ body {
 }
 
 .listItem span {
-  width: 4.5rem;
+  width: 5.5rem;
   font-size: 1.4rem;
   padding: 1rem;
   background-color: var(--darckGreen);
@@ -167,6 +168,24 @@ body {
   height: 4rem;
 }
 
+.step-carousel-item:first-child {
+  border-radius: 5rem 0 0 5rem;
+}
+
+.step-carousel-item:last-child {
+  border-radius: 0 5rem 5rem 0;
+}
+
+.step-carousel-arrowL,
+.step-carousel-arrowR {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 .step-carousel-arrowL,
 .step-carousel-arrowR {
   height: 5rem;
@@ -178,5 +197,23 @@ body {
   display: flex;
   height: 1rem;
   width: 100%;
-  background: magenta;
+  background: var(--lightGreen);
+}
+
+.active {
+  background: var(--darckGreen)
+}
+
+.recipe-wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.recipe-container {
+  display: grid;
+  margin: auto;
+  padding: 0;
 }

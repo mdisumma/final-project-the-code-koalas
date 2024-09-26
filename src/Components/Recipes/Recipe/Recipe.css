@@ -1,12 +1,15 @@
 .recipie-element {
   background-color: var(--white);
-  padding: 1rem;
+  padding: 2rem;
   width: 28rem;
-  display: flex;
+  display: grid;
+  grid-template-rows: 1fr 2fr;
   flex-direction: column;
   font-size: 1.4rem;
   border-radius: 1rem;
   margin: 1rem;
+  align-items: center;
+  justify-content: center;
 }
 
 /* details */
@@ -24,11 +27,14 @@
 /* steps */
 .recipie-steps-container {
   border-radius: 1rem;
-  margin-top: 1rem;
+  margin-top: 2rem;
+  margin: 2rem 0px;
   width: 28rem;
+  height: 90%;
+  align-self: baseline;
   display: flex;
   overflow: hidden;
-  border: 1px solid var(--darckGreen);
+  border: 2px solid var(--darckGreen);
 }
 
 .recipie-step-number {
