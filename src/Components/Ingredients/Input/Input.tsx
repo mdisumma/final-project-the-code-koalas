@@ -213,12 +213,12 @@ Remember to format the response as an array of objects.`;
         <div>
           {ingredients.map((ingredient, index) => (
             <div key={index} className="ingredients-white-box">
-              <span>{ingredient}</span>
+              <span className="ingredient-text">{ingredient}</span>
               <span
                 onClick={() => removeIngredient(ingredient)}
                 className="remove-ingredient-button"
               >
-                <IoIosCloseCircleOutline fontSize="2rem" />
+                <IoIosCloseCircleOutline fontSize="3rem" />
               </span>
             </div>
           ))}
