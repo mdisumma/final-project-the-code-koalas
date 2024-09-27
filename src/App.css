@@ -42,7 +42,6 @@ body {
 
 /* main container */
 .main-container {
-
   height: calc(100vh - 20rem);
   display: flex;
   flex-direction: column;
@@ -50,7 +49,7 @@ body {
   justify-content: space-between;
   align-items: center;
   margin: 3rem auto;
-  width: 45rem;
+  width: 32rem;
 }
 
 /* input element */
@@ -125,7 +124,7 @@ body {
 }
 
 .listItem span {
-  gap: .5rem;
+  gap: 0.5rem;
 }
 
 /* action button */
@@ -172,7 +171,7 @@ body {
   display: flex;
   flex-direction: row;
   width: 100%;
-  gap: .2rem;
+  gap: 0.2rem;
   align-items: center;
   justify-content: center;
   height: 4rem;
@@ -222,7 +221,7 @@ body {
 }
 
 .active {
-  background: var(--darckGreen)
+  background: var(--darckGreen);
 }
 
 .recipe-wrapper {
@@ -247,7 +246,7 @@ body {
 .recipe-details span {
   display: flex;
   align-items: center;
-  gap: .2rem;
+  gap: 0.2rem;
   padding: 0;
 }
 
