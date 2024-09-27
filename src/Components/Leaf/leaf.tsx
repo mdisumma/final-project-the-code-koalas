@@ -16,6 +16,7 @@ const Leaf: React.FC = () => {
             height: 'auto',
             transformOrigin: 'center',
             animation: 'sway 5s ease-in-out infinite',
+            zIndex: -1,
           }}
         />
         <img
@@ -29,6 +30,7 @@ const Leaf: React.FC = () => {
             height: 'auto',
             transformOrigin: 'center',
             animation: 'sway 5s ease-in-out infinite',
+            zIndex: -1,
           }}
         />
       </>
