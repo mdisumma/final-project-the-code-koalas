@@ -47,7 +47,7 @@ body {
   display: flex;
   flex-direction: column;
   /* padding: 5rem 0; */
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   margin: 3rem auto;
   width: 45rem;
@@ -149,6 +149,7 @@ body {
   font-size: 1.4rem;
   background-color: var(--red);
   height: 6rem;
+  margin-top: 2rem;
 }
 
 .spin {
