@@ -56,10 +56,10 @@ export default function App() {
               />
             </div>
             {(currentScreen === 1) && (
-              <ActionButton text="Go back to ingredients" onClick={() => handleClick(0)} disabled={false} />
+              <ActionButton text="Go back to ingredients" onClick={() => handleClick(0)} disabled={false} style={{ backgroundColor: 'var(--grey)' }} />
             )}
             {(currentScreen === 2) && (
-              <ActionButton text="Return to recipe list" onClick={() => handleClick(1)} disabled={false} />
+              <ActionButton text="Return to recipe list" onClick={() => handleClick(1)} disabled={false} style={{ backgroundColor: 'var(--grey)' }} />
             )}
           </section>
         )}
