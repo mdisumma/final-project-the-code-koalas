@@ -74,6 +74,9 @@
   color: var(--red);
   font-weight: 800;
 }
+.speach-box {
+  margin: 0 1rem;
+}
 
 #speach-spike {
   fill: var(--white);

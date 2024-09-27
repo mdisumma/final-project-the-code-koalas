@@ -42,7 +42,7 @@ body {
 
 /* main container */
 .main-container {
-  height: calc(100vh - 20rem);
+  min-height: calc(100vh - 20rem);
   display: flex;
   flex-direction: column;
   /* padding: 5rem 0; */
